@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Analyzer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      width: 300px;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      margin: 5px 0;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>URL Analyzer</h1>
+  <input type="text" id="urlInput" placeholder="Enter URL here" />
+  <button id="analyzeBtn">Analyze URL</button>
+  <div class="result" id="result"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

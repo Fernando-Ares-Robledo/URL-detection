@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Analyzer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      width: 350px;
+      padding: 0;
+      margin: 0;
+      background-color: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 250px;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    #result {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-weight: 500;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      text-align: center;
+    }
+    .status-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .benign {
+      color: #28a745;
+    }
+    .malicious {
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>URL Analyzer</h1>
+    <div id="statusIcon" class="status-icon"></div>
+    <div id="result">Comprobando...</div>
+    <button id="analyzeButton">Analizar</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
