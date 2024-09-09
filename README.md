@@ -2,6 +2,8 @@
 
 Este repositorio contiene el código y los materiales relacionados con mi Trabajo de Fin de Máster sobre la **detección de URLs maliciosas**.
 
+-Autor: fernando ares robledo
+-email: fernandoaresrobledo@gmail.com
 ## Contenido del repositorio
 
 El repositorio se estructura en las siguientes carpetas y archivos:
