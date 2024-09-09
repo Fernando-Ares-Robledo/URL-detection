@@ -1,0 +1,39 @@
+\subsection{Implementación del \textit{Dashboard}}
+
+Para la implementación del \gls{dashboard} se ha utilizado \textit{Streamlit}, una herramienta de código abierto que facilita la creación de aplicaciones web interactivas para el análisis de datos. Este \gls{dashboard} está diseñado para proporcionar dos funcionalidades principales: la evaluación en tiempo real de \glspl{url} introducidas por el usuario y el análisis de las características de las \glspl{url} almacenadas en la base de datos.
+
+\subsubsection*{Funcionalidades del \textit{Dashboard}}
+
+El \gls{dashboard} desarrollado en \textit{Streamlit} consta de dos partes principales:
+
+\begin{itemize}
+    \item \textbf{Evaluación en Tiempo Real de URLs}: Esta sección permite al usuario introducir una \gls{url} y obtener instantáneamente un análisis detallado de sus características y una predicción sobre si la \gls{url} es maligna o no. El proceso de evaluación incluye la extracción de características de la \gls{url} y la consulta al modelo de \textit{machine learning} alojado en el servidor \textit{Flask}.
+
+    \item \textbf{Análisis de Características de URLs Almacenadas}: Esta sección del \gls{dashboard} proporciona una visualización interactiva de las características de las \glspl{url} almacenadas en la base de datos \textit{PostgreSQL}. Los usuarios pueden explorar diversas métricas y estadísticas clave, como la distribución geográfica de las \glspl{url}, la proporción de \glspl{url} benignas y malignas, y otros patrones relevantes.
+\end{itemize}
+
+\subsubsection*{Implementación del \textit{Dashboard} en \textit{Streamlit}}
+
+La implementación del \gls{dashboard} en \textit{Streamlit} se realiza mediante un conjunto de scripts en \textit{Python} que integran diversas librerías de análisis de datos y visualización. A continuación, se describen los componentes clave del \gls{dashboard}:
+
+\begin{itemize}
+    \item \textbf{Interfaz de Usuario}: Utilizando \textit{Streamlit}, se ha diseñado una interfaz intuitiva y amigable que permite a los usuarios introducir \glspl{url} y visualizar los resultados del análisis. Los formularios y botones interactivos facilitan la navegación y el acceso a las diferentes funcionalidades del \gls{dashboard}.
+
+    \item \textbf{Extracción de Características}: Al introducir una \gls{url}, el \gls{dashboard} realiza una solicitud al servidor \textit{Flask} para extraer las características de la \gls{url} y obtener una predicción sobre su naturaleza (benigna o maligna). Los resultados se presentan en un formato claro y comprensible para el usuario.
+
+    \item \textbf{Visualización de Datos}: La sección de análisis de características utiliza librerías como \textit{Matplotlib} y \textit{Seaborn} para generar gráficos interactivos que muestran las estadísticas clave de las \glspl{url} almacenadas. Estas visualizaciones incluyen gráficos de barras, histogramas, mapas de calor y gráficos geográficos, proporcionando una comprensión profunda de los datos.
+
+    \item \textbf{Conexión a la Base de Datos}: La integración con la base de datos \textit{PostgreSQL} permite al \gls{dashboard} acceder a las \glspl{url} almacenadas y sus características. Las consultas a la base de datos se realizan de manera eficiente para garantizar una experiencia de usuario fluida y rápida.
+\end{itemize}
+
+\subsubsection*{Beneficios del \textit{Dashboard}}
+
+El \gls{dashboard} desarrollado proporciona varios beneficios significativos:
+
+\begin{itemize}
+    \item \textbf{Evaluación Instantánea}: Permite a los usuarios evaluar la seguridad de las \glspl{url} en tiempo real, proporcionando una herramienta valiosa para la protección contra \gls{phishing} y otras amenazas en línea.
+
+    \item \textbf{Análisis Profundo}: Ofrece una visión detallada de las características y patrones de las \glspl{url} almacenadas, facilitando la identificación de tendencias y comportamientos sospechosos.
+
+    \item \textbf{Interactividad y Usabilidad}: La interfaz intuitiva y las visualizaciones interactivas hacen que el \gls{dashboard} sea accesible y fácil de usar, incluso para usuarios sin experiencia técnica.
+\end{itemize}

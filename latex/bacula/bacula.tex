@@ -1,0 +1,28 @@
+La continua adaptación del ransomware frente a las medidas de defensa subraya la urgente necesidad de soluciones de backup robustas y flexibles. En este contexto, Bacula emerge como una herramienta prometedora, destacándose por su configuración adaptable y su apoyo a prácticas avanzadas de backup. Este análisis se enfoca en el estado actual de Bacula, evaluando su implementación y eficacia como parte de una estrategia de ciberseguridad integral, brindando una perspectiva sobre el fortalecimiento de la resiliencia organizacional frente a la amenaza del ransomware.\medskip
+
+Bacula, un sistema de backup, recuperación y verificación de datos a través de la red, ofrece una solución integral para la gestión de backups. Su arquitectura se compone de varios componentes clave, incluyendo el Director, el Cliente, y el Almacenamiento, trabajando en conjunto para asegurar la integridad y la disponibilidad de los datos\autocite{bacula2023current}.
+
+\medskip
+
+\subsection{Características Implementadas}
+
+\medskip
+Las capacidades actuales de Bacula abarcan:
+
+\begin{itemize}
+  \item \textbf{Control de Trabajos:} \begin{itemize} \item Bacula ofrece un control exhaustivo sobre los backups, permitiendo programaciones automáticas, ejecución simultánea de múltiples trabajos y secuenciación basada en prioridades.\end{itemize}
+  \item \textbf{Seguridad:}  \begin{itemize} \item Incluye verificación de archivos, autenticación CRAM-MD5, encriptación TLS y de datos, así como la computación de firmas digitales.\end{itemize}
+  \item \textbf{Restauración Avanzada:} \begin{itemize} \item Bacula posibilita la restauración de archivos de manera interactiva, la recuperación completa del sistema y la restauración del catálogo de backups.\end{itemize}
+  \item \textbf{Gestión de Catálogo SQL:}  \begin{itemize} \item Soporta bases de datos MySQL, PostgreSQL y SQLite, facilitando una amplia gestión de los datos de backup.\end{itemize}
+  \item \textbf{Administración de Volúmenes y Piscinas:} Permite una gestión flexible de los medios de almacenamiento, incluyendo la migración de datos y el soporte para dispositivos auto-cargadores.
+  \item \textbf{Soporte Multiplataforma:}  \begin{itemize} \item Compatible con una variedad de sistemas operativos, ofrece compresión GZIP y mantiene la coherencia de backups en sistemas Win32 mediante VSS.\end{itemize}
+\end{itemize}
+
+\subsection{Restricciones Actuales y Limitaciones de Diseño}
+
+
+A pesar de su robustez, Bacula enfrenta limitaciones, como la restauración compleja de trabajos simultáneos y la transición entre arquitecturas significativamente diferentes. Además, el diseño impone límites en la longitud de nombres y en la entrada de comandos en algunas herramientas independientes.\medskip
+
+Específicamente, la programación interna de Bacula, aunque eficiente, presenta limitaciones en entornos donde la concurrencia de trabajos es crítica. El sistema de colas FCFS y el manejo estático de prioridades pueden resultar en ineficiencias, como el efecto convoy y la posible inanición de trabajos de baja prioridad. Estos desafíos subrayan la necesidad de enfoques de programación más dinámicos y adaptativos.\medskip
+
+La implementación y evaluación de Bacula en escenarios simulados de ransomware proporcionan una valiosa oportunidad para examinar su efectividad dentro de una estrategia de ciberseguridad comprensiva. A través de este trabajo, se busca no solo explorar la robustez de Bacula frente a la amenaza del ransomware, sino también identificar áreas de mejora que puedan fortalecer aún más la resiliencia organizacional.\medskip

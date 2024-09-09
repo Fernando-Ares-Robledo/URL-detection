@@ -1,0 +1,63 @@
+\subsection{Recopilación de Datos}
+
+Los datos necesarios para este trabajo se han extraído utilizando \glspl{script} en Python y se han almacenado en una base de datos PostgreSQL. Los \glspl{script} que muestran cómo se obtienen estos datos están disponibles en mi repositorio de GitHub: \url{https://github.com/Fernando-Ares-Robledo/URL-detection}.
+
+Esta base de datos PostgreSQL contiene varias tablas que se han poblado con diferentes fuentes de datos:
+
+\subsubsection*{Tabla de URLs}
+La tabla \texttt{urls} almacena las \glspl{url} recopiladas, clasificadas como maliciosas o benignas. Los datos para esta tabla provienen de las siguientes fuentes:
+\begin{itemize}
+    \item URLhaus - Malware URL exchange (\url{https://urlhaus.abuse.ch/}).
+    \item Radek Hranický, et al. (2023). \textit{Phishing and Benign Domain Dataset (DNS, IP, WHOIS/RDAP, TLS, GeoIP)} (\url{https://doi.org/10.5281/zenodo.8364668}).
+    \item 15 million Domain Names Dataset (\url{https://www.kaggle.com/datasets/aayushah19/dga-or-benign-domain-names?resource=download}).
+\end{itemize}
+
+La estructura de esta tabla es la siguiente:
+\begin{itemize}
+    \item \texttt{url} (text, no nulo): Almacena la \gls{url} completa.
+    \item \texttt{maligna} (boolean, no nulo): Indica si la \gls{url} es maliciosa (true) o benigna (false).
+    \item \texttt{tipo} (text, no nulo): Especifica el tipo de \gls{url}, por ejemplo, \texttt{phishing} o \texttt{benigna}.
+\end{itemize}
+
+\subsubsection*{Tabla de Queries}
+La tabla \texttt{queries} almacena \glspl{query} clasificadas como buenas o malas, con datos provenientes de:
+\begin{itemize}
+    \item Faizann. \textit{GitHub - faizann24/Fwaf-Machine-Learning-driven-Web-Application-Firewall} (\url{https://github.com/faizann24/Fwaf-Machine-Learning-driven-Web-Application-Firewall}).
+\end{itemize}
+
+La estructura de esta tabla es la siguiente:
+\begin{itemize}
+    \item \texttt{id} (integer, no nulo, clave primaria, autoincremental): Identificador único para cada \gls{query}.
+    \item \texttt{query} (text, no nulo): Almacena la \gls{query}.
+    \item \texttt{buena} (boolean, no nulo): Indica si la \gls{query} es buena (true) o mala (false).
+\end{itemize}
+
+\subsubsection*{Tabla de Palabras Sospechosas}
+La tabla \texttt{palabras} contiene palabras consideradas sospechosas, obtenidas de las siguientes fuentes:
+\begin{itemize}
+    \item Danielmiessler. \textit{SecLists/Discovery/Web-Content/raft-large-words.txt} (\url{https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/raft-large-words.txt}).
+    \item Danielmiessler. \textit{SecLists/Passwords/Common-Credentials/10k-most-common.txt} (\url{https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt}).
+\end{itemize}
+
+La estructura de esta tabla es la siguiente:
+\begin{itemize}
+    \item \texttt{id} (integer, no nulo, clave primaria, autoincremental): Identificador único para cada palabra.
+    \item \texttt{palabra} (text, no nulo): Almacena la palabra sospechosa.
+    \item \texttt{tipo} (text, no nulo): Especifica el tipo de palabra, por ejemplo, \texttt{común} o \texttt{contenido web}.
+\end{itemize}
+
+\subsubsection*{Tabla de TLDs}
+La tabla \texttt{tlds} almacena los \glspl{tld} y su información asociada, con datos obtenidos de:
+\begin{itemize}
+    \item Root Zone Database (\url{https://www.iana.org/domains/root/db}).
+\end{itemize}
+
+La estructura de esta tabla es la siguiente:
+\begin{itemize}
+    \item \texttt{id} (integer, no nulo, clave primaria, autoincremental): Identificador único para cada \gls{tld}.
+    \item \texttt{domain} (text, no nulo): Almacena el \gls{tld}, por ejemplo, \texttt{.com} o \texttt{.org}.
+    \item \texttt{type} (text, opcional): Especifica el tipo de \gls{tld}, como \texttt{genérico} o \texttt{código de país}.
+    \item \texttt{tld\_manager} (text, opcional): Indica la organización responsable de la gestión del \gls{tld}.
+\end{itemize}
+
+Estas tablas serán utilizadas para crear una nueva tabla con las características de las \glspl{url}, la cual se definirá en la siguiente sección.

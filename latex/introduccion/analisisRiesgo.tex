@@ -1,0 +1,81 @@
+
+
+
+\definecolor{riskcolor}{RGB}{225,225,250} % Fondo claro para los riesgos
+\definecolor{highprob}{RGB}{255,200,200} % Color para probabilidad alta
+\definecolor{medprob}{RGB}{255,255,200} % Color para probabilidad media
+\definecolor{lowprob}{RGB}{200,255,200} % Color para probabilidad baja
+
+\newcommand{\alta}{\textcolor{red}{\ding{55}}}
+\newcommand{\media}{\textcolor{orange}{\ding{51}}}
+\newcommand{\baja}{\textcolor{green}{\ding{108}}}
+
+\tcbset{
+    riskbox/.style={
+        colback=riskcolor,
+        colframe=black,
+        fonttitle=\bfseries,
+        colbacktitle=riskcolor,
+        coltitle=black,
+        enhanced,
+        breakable,
+        left=4mm,
+        right=4mm,
+        top=2mm,
+        bottom=2mm,
+        boxsep=2mm
+    },
+    prob/.style={circle, minimum width=1cm, minimum height=1cm, draw=black, fill=#1, align=center},
+    probhigh/.style={prob=highprob},
+    probmed/.style={prob=medprob},
+    problow/.style={prob=lowprob}
+}
+
+
+
+
+\bigskip
+
+\begin{tcolorbox}[riskbox, title=Riesgo 1: Retrasos en el Cronograma]
+\textbf{Probabilidad:} Alta \alta; \\
+\textbf{Impacto:} Medio \media\\
+\textbf{Mitigación:} Adoptar una metodología ágil permite ajustes flexibles y reasignación de recursos para mantener el proyecto en curso. Las revisiones regulares y la planificación de sprints ayudan a identificar retrasos tempranamente.
+\end{tcolorbox}
+
+\begin{tcolorbox}[riskbox, title=Riesgo 2: Limitaciones Técnicas con Algoritmos de \textit{Machine Learning}]
+\textbf{Probabilidad:} Media \media; \\
+\textbf{Impacto:} Alto \alta\\
+\textbf{Mitigación:} Invertir tiempo en la investigación y pruebas preliminares de diferentes algoritmos de \textit{machine learning}. Participar en comunidades y foros especializados para buscar soporte y mejores prácticas.
+\end{tcolorbox}
+
+\begin{tcolorbox}[riskbox, title=Riesgo 3: Problemas de Integración del \gls{plugin} de Navegador]
+\textbf{Probabilidad:} Media \media; \\
+\textbf{Impacto:} Alto \alta\\
+\textbf{Mitigación:} Realizar pruebas de integración tempranas y continuas. Asegurarse de que el \gls{plugin} cumpla con las políticas y requisitos de los navegadores más utilizados.
+\end{tcolorbox}
+
+\begin{tcolorbox}[riskbox, title=Riesgo 4: Dificultades en la Implementación del \gls{dashboard}]
+\textbf{Probabilidad:} Baja \baja; \\
+\textbf{Impacto:} Medio \media\\
+\textbf{Mitigación:} Seleccionar herramientas y tecnologías compatibles desde el inicio. Realizar pruebas de integración tempranas para detectar y solucionar problemas de compatibilidad.
+\end{tcolorbox}
+
+\begin{tcolorbox}[riskbox, title=Riesgo 5: Pérdida de Datos o Fallos en el Entorno de Pruebas]
+\textbf{Probabilidad:} Baja \baja; \\
+\textbf{Impacto:} Alto \alta\\
+\textbf{Mitigación:} Implementar prácticas de \textit{backup} regulares del entorno de pruebas y utilizar control de versiones para el código y la documentación. Esto incluye el uso de GitHub para almacenamiento y seguimiento.
+\end{tcolorbox}
+
+\begin{tcolorbox}[riskbox, title=Riesgo 6: Cambios en los Requisitos o Alcance del Proyecto]
+\textbf{Probabilidad:} Media \media\\
+\textbf{Impacto:} Medio \media\\
+\textbf{Mitigación:} Mantener una comunicación clara y continua con el tutor y revisar regularmente los objetivos del proyecto para adaptar el alcance si es necesario. La flexibilidad inherente de la metodología ágil facilita la gestión de cambios.
+\end{tcolorbox}
+
+\begin{tcolorbox}[riskbox, title=Riesgo 7: Acceso Limitado a  Recursos]
+\textbf{Probabilidad:} Baja \baja\\
+\textbf{Impacto:} Medio \media\\
+\textbf{Mitigación:} Planificar adecuadamente el uso de recursos disponibles y buscar alternativas o soporte adicional si es necesario.
+\end{tcolorbox}
+
+

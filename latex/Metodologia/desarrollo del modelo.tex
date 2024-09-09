@@ -1,0 +1,128 @@
+\subsection{Desarrollo del Modelo}
+
+\subsubsection*{Descripción de los algoritmos de \textit{Machine Learning} utilizados}
+En este proyecto, se emplearon múltiples algoritmos de \textit{machine learning} para la detección de \glspl{url} maliciosas. Los algoritmos utilizados fueron:
+
+\begin{itemize}
+    \item \textbf{Árbol de Decisión}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+        \item Búsqueda Exhaustiva de Hiperparámetros (Grid Search)
+    \end{itemize}
+    \item \textbf{Bosque Aleatorio (\textit{Random Forest})}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+        \item Búsqueda Exhaustiva de Hiperparámetros (Grid Search)
+    \end{itemize}
+    \item \textbf{K-Vecinos más Cercanos (\textit{K-Nearest Neighbors, KNN})}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+        \item Búsqueda Exhaustiva de Hiperparámetros (Grid Search)
+    \end{itemize}
+    \item \textbf{XGBoost}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+        \item Búsqueda Exhaustiva de Hiperparámetros (Grid Search)
+    \end{itemize}
+    \item \textbf{Máquina de Soporte Vectorial (\textit{Support Vector Machine, SVM})}
+    \item \textbf{LightGBM (\textit{Light Gradient Boosting Machine})}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+        \item Búsqueda Exhaustiva de Hiperparámetros (Grid Search)
+    \end{itemize}
+    \item \textbf{Gradient Boosting}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+        \item Búsqueda Exhaustiva de Hiperparámetros (Grid Search)
+    \end{itemize}
+    \item \textbf{AdaBoost}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+        \item Búsqueda Exhaustiva de Hiperparámetros (Grid Search)
+    \end{itemize}
+    \item \textbf{Regresión Logística}: 
+    \begin{itemize}
+        \item Búsqueda Aleatoria de Hiperparámetros (Random Search)
+    \end{itemize}
+\end{itemize}
+
+
+
+\subsubsection{Modelos de Stacking Utilizados}
+
+En el proyecto se implementaron dos modelos de \textit{stacking} para mejorar la precisión y robustez de la detección de \glspl{url} maliciosas. 
+
+\textbf{Primer Modelo de Stacking}
+El primer modelo de \textit{stacking} combina las predicciones de todos los modelos base mencionados anteriormente. Este enfoque permite aprovechar las fortalezas de diferentes algoritmos y minimizar sus debilidades individuales. Se utilizó un meta-modelo de \textit{Logistic Regression} para combinar las predicciones de los modelos base y generar la predicción final.
+
+\textbf{Segundo Modelo de Stacking}
+El segundo modelo de \textit{stacking} aplica un enfoque más avanzado que considera diferentes subconjuntos de características y algoritmos para optimizar el rendimiento. Este modelo se construye de la siguiente manera:
+
+\begin{enumerate}
+    \item \textbf{Selección de Subconjuntos de Características}: Se crearon cuatro subconjuntos de características:
+    \begin{itemize}
+        \item \textbf{Conjunto 1}: Incluye las características \texttt{usa\_https}, \texttt{esta\_registrada}, \texttt{cantidad\_letras} y otras características restantes.
+        \item \textbf{Conjunto 2}: Incluye todas las características excepto \texttt{usa\_https}.
+        \item \textbf{Conjunto 3}: Incluye todas las características excepto \texttt{esta\_registrada}.
+        \item \textbf{Conjunto 4}: Incluye todas las características excepto \texttt{cantidad\_letras}.
+    \end{itemize}
+
+    \item \textbf{Entrenamiento de Modelos Base}: Para cada subconjunto de características, se entrenaron los siguientes modelos:
+    \begin{itemize}
+        \item \textbf{Random Forest}
+        \item \textbf{Logistic Regression}
+        \item \textbf{XGBoost}
+    \end{itemize}
+
+    \item \textbf{Generación de Predicciones}: Las predicciones de cada modelo base se generaron para el conjunto de validación y prueba.
+
+    \item \textbf{Entrenamiento del Meta-Modelo}: Un meta-modelo de \textit{Logistic Regression} se entrenó utilizando las predicciones generadas por los modelos base en el conjunto de validación. Este meta-modelo combina las predicciones para producir la predicción final.
+
+    \item \textbf{Evaluación del Modelo}: El modelo de \textit{stacking} se evaluó utilizando las predicciones del conjunto de prueba para medir su precisión, falsos positivos y falsos negativos.
+\end{enumerate}
+
+El segundo modelo de \textit{stacking} es particularmente efectivo porque permite capturar interacciones complejas entre diferentes características y modelos base.
+
+
+
+
+\subsubsection*{Detalles sobre el entrenamiento y la validación del modelo}
+El proceso de entrenamiento y validación se llevó a cabo siguiendo estos pasos:
+
+\begin{enumerate}
+    \item \textbf{División del Conjunto de Datos}: 
+    \begin{itemize}
+        \item El conjunto de datos se dividió en tres subconjuntos: entrenamiento (60\%), validación (20\%) y prueba (20\%).
+    \end{itemize}
+    \item \textbf{Selección de Características}: 
+    \begin{itemize}
+        \item Se crearon diferentes subconjuntos de características para explorar cómo diferentes combinaciones afectan el rendimiento de los modelos.
+    \end{itemize}
+    \item \textbf{Entrenamiento de Modelos}: 
+    \begin{itemize}
+        \item Se entrenaron múltiples modelos utilizando diferentes algoritmos de \textit{machine learning} y se optimizaron los hiperparámetros utilizando búsquedas aleatorias y exhaustivas.
+    \end{itemize}
+    \item \textbf{Validación Cruzada}: 
+    \begin{itemize}
+        \item Se utilizó validación cruzada de 3 pliegues para asegurar que los modelos no estén sobreajustados y generalicen bien en datos no vistos.
+    \end{itemize}
+    \item \textbf{Evaluación del Meta-Modelo}: 
+    \begin{itemize}
+        \item Los meta-modelos de \textit{stacking} se entrenaron utilizando las predicciones de los modelos base en el conjunto de validación y se evaluaron tanto en el conjunto de validación como en el de prueba.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection*{Métricas de evaluación empleadas}
+
+Para evaluar el rendimiento de los modelos de \textit{machine learning} en la detección de \glspl{url} maliciosas, hemos seleccionado tres métricas clave: precisión, falsos positivos y falsos negativos. La elección de estas métricas se justifica por las siguientes razones:
+
+\begin{itemize}
+    \item \textbf{Precisión}: La precisión es una métrica fundamental en problemas de clasificación, especialmente en el contexto de la detección de \glspl{url} maliciosas. Se define como la proporción de verdaderos positivos (URLs maliciosas correctamente identificadas) entre el total de predicciones positivas (URLs predichas como maliciosas). La precisión es crucial porque queremos asegurarnos de que las URLs identificadas como maliciosas sean efectivamente maliciosas, minimizando las falsas alarmas.
+
+    \item \textbf{Falsos Positivos (FP)}: Los falsos positivos ocurren cuando una URL benigna se clasifica incorrectamente como maliciosa. Esta métrica es esencial para evaluar porque un alto número de falsos positivos puede generar desconfianza en el sistema y causar interrupciones innecesarias. En un entorno real, un número elevado de falsos positivos podría resultar en la pérdida de acceso a recursos legítimos y generar alertas innecesarias, disminuyendo la usabilidad del sistema.
+
+    \item \textbf{Falsos Negativos (FN)}: Los falsos negativos se producen cuando una URL maliciosa no es detectada y se clasifica erróneamente como benigna. Esta métrica es crítica porque un falso negativo implica que una amenaza potencial no ha sido identificada, lo que podría llevar a una brecha de seguridad. Minimizar los falsos negativos es vital para garantizar que el sistema de detección sea efectivo en la protección contra \gls{phishing} y otros ataques cibernéticos.
+
+\end{itemize}
+
+Aunque existen muchas otras métricas de evaluación en el campo del \textit{machine learning} (como \textit{recall}, \textit{F1 score}, área bajo la curva ROC, entre otras), la precisión, los falsos positivos y los falsos negativos han sido seleccionados debido a su relevancia directa en el contexto de la detección de \glspl{url} maliciosas. Estas métricas proporcionan una visión equilibrada del rendimiento del modelo, asegurando que las predicciones sean tanto precisas como fiables, mientras se minimizan los errores críticos que podrían comprometer la seguridad del sistema.

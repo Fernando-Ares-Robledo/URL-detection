@@ -1,0 +1,110 @@
+\subsection{Anexo: Poblar Tabla Dominios de Kaggle}
+
+\subsection*{Descarga y Procesamiento de Dominios de Kaggle}
+
+Este script en Python descarga un dataset de dominios desde Kaggle, verifica si los dominios ya existen en la base de datos, y agrega las nuevas entradas.
+
+\begin{lstlisting}[language=Python, caption=Script para procesar dominios de Kaggle]
+import os
+import kaggle
+import pandas as pd
+import psycopg2
+from psycopg2 import sql
+import zipfile
+
+# Configuración de la conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="url",
+    user="postgres",
+    password="1234",
+    host="localhost",
+    port="5432"
+)
+cur = conn.cursor()
+
+# Configurar la API de Kaggle
+os.environ['KAGGLE_CONFIG_DIR'] = os.getcwd()
+
+# Descargar el dataset de Kaggle
+dataset_path = './'
+kaggle.api.dataset_download_files(
+    'aayushah19/dga-or-benign-domain-names', path=dataset_path, unzip=False)
+
+# Buscar el archivo ZIP descargado
+zip_file = None
+for file in os.listdir(dataset_path):
+    if file.endswith('.zip'):
+        zip_file = os.path.join(dataset_path, file)
+        break
+
+if not zip_file:
+    raise FileNotFoundError("El archivo ZIP no se encuentra en el directorio especificado.")
+
+# Descomprimir el archivo ZIP
+with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+    zip_ref.extractall(dataset_path)
+
+# Buscar el archivo CSV descomprimido
+csv_file = None
+for file in os.listdir(dataset_path):
+    if file.endswith('.csv'):
+        csv_file = os.path.join(dataset_path, file)
+        break
+
+if not csv_file:
+    raise FileNotFoundError("El archivo CSV no se encuentra después de descomprimir el ZIP.")
+
+# Leer el CSV en un DataFrame
+df = pd.read_csv(csv_file)
+
+# Limpiar los datos
+df['domain'] = df['domain'].astype(str).str.strip()
+df = df.dropna(subset=['domain'])
+
+# Crear la tabla si no existe
+cur.execute("""
+CREATE TABLE IF NOT EXISTS dominios (
+    domain TEXT PRIMARY KEY,
+    benigno BOOLEAN NOT NULL
+)
+""")
+conn.commit()
+
+# Procesar y agregar los dominios a la base de datos
+for _, row in df.iterrows():
+    domain = row['domain']
+    benigno = row['label'] == 'benign'
+
+    # Comprobar si el dominio ya está en la base de datos
+    cur.execute("SELECT EXISTS(SELECT 1 FROM dominios WHERE domain=%s)", (domain,))
+    exists = cur.fetchone()[0]
+
+    if not exists:
+        # Insertar el dominio en la base de datos
+        cur.execute(
+            sql.SQL("INSERT INTO dominios (domain, benigno) VALUES (%s, %s)"),
+            (domain, benigno)
+        )
+
+conn.commit()
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+
+print("Proceso completado.")
+\end{lstlisting}
+
+\subsection*{Explicación del Código}
+
+\begin{itemize}
+    \item \textbf{Configuración de la Conexión}: Se configura la conexión a la base de datos PostgreSQL con las credenciales y parámetros correspondientes.
+    \item \textbf{Configuración de la API de Kaggle}: Se establece la ruta del archivo \texttt{kaggle.json} que contiene las credenciales de la API.
+    \item \textbf{Descarga del Dataset de Kaggle}: Se utiliza la API de Kaggle para descargar el archivo ZIP del dataset.
+    \item \textbf{Descompresión del ZIP}: Se descomprime el archivo ZIP descargado para acceder al archivo CSV.
+    \item \textbf{Lectura del CSV}: Se lee el archivo CSV en un DataFrame de \texttt{pandas}.
+    \item \textbf{Limpieza de Datos}: Se limpian los datos del DataFrame, eliminando espacios en blanco y filas con valores nulos en la columna \texttt{domain}.
+    \item \textbf{Creación de la Tabla \texttt{dominios}}: Si la tabla \texttt{dominios} no existe, se crea con las columnas \texttt{domain} y \texttt{benigno}.
+    \item \textbf{Procesamiento de Datos}: Se itera sobre las filas del DataFrame, verificando si cada dominio ya está en la base de datos. Si el dominio no está en la base de datos, se inserta con los valores correspondientes (\texttt{benigno=True} o \texttt{benigno=False}).
+    \item \textbf{Cierre de la Conexión}: Se cierra la conexión a la base de datos.
+\end{itemize}

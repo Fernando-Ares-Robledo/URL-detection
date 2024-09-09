@@ -1,0 +1,151 @@
+La planificación se divide en sprints de 2 semanas, ajustándose a las fechas de las PECs y otros hitos clave del proyecto. A continuación, se presenta la planificación temporal: 
+
+\begin{tcolorbox}[phasebox, title=Fases del trabajo]
+    % Sprint 1
+    \small
+    \begin{tcolorbox}[sprintbox, title=Sprint 1: Definición del Proyecto y Recolección de Datos]
+        \textbf{Tareas:}
+        \begin{itemize}
+            \item Definir el alcance del proyecto y los objetivos específicos.
+            \item Selección inicial de herramientas y recursos necesarios.
+            \item Recolección y análisis preliminar de datos de URLs.
+            \item Creación de un repositorio en GitHub.
+        \end{itemize}
+        \textbf{Recursos y Herramientas:}
+        \begin{itemize}
+            \item Google Documents, GitHub, Trello.
+            \item Python.
+            \item Documentación de fuentes de datos (URLhaus, PhishTank, Google Safe Browsing).
+        \end{itemize}
+        \textbf{Retrospectiva:} Revisión de la planificación inicial, ajustes según feedback del tutor. 25 May. - 10 Jun.\\
+        \textbf{Hito:} Alcance del proyecto y objetivos específicos definidos.
+    \end{tcolorbox}
+
+
+    \begin{tcolorbox}[sprintbox, title= Sprint 2 y 3: Desarrollo del Extractor de Características.]
+    
+        \textbf{Tareas:}
+        \begin{itemize}
+            \item Desarrollo del extractor de características en Python.
+            \item Implementación de análisis léxico, WHOIS, datos geográficos, etc.
+            \item Pruebas y validación del extractor de características.
+            
+        \end{itemize}
+        \textbf{Recursos y Herramientas:}
+        \begin{itemize}
+            \item Python, GitHub, Trello.
+
+            \item Bibliotecas: numpy, scipy, sklearn, requests, etc.
+
+        \end{itemize}
+        \textbf{Retrospectiva:} Revisión del extractor, ajuste de funcionalidades y corrección de errores.\\
+        \textbf{Hito:} Extractor de características desarrollado y validado (11 de Junio - 30 de Junio).
+
+    \end{tcolorbox}
+
+
+    \begin{tcolorbox}[sprintbox, title= Sprint 4 a 6: Entrenamiento y Evaluación del Modelo de Machine Learning]
+        \textbf{Tareas:}
+        \begin{itemize}
+            \item Preparación de datos para el entrenamiento del modelo.
+
+            \item Entrenamiento de modelos (Stacking, XGBoost, etc.).
+
+            \item Evaluación de los modelos utilizando métricas de precisión, FP, FN.
+
+            
+        \end{itemize}
+        \textbf{Recursos y Herramientas:}
+        \begin{itemize}
+            \item Python, GitHub, Trello.
+            \item Bibliotecas: sklearn, xgboost, matplotlib.
+
+        \end{itemize}
+        \textbf{Retrospectiva:} Revisión del rendimiento del modelo, ajuste de hiperparámetros.\\
+        \textbf{Hito:} Modelo de machine learning entrenado y evaluado (1 de Julio - 20 de Julio).
+
+    \end{tcolorbox}
+
+    
+    \begin{tcolorbox}[sprintbox, title= Sprint 7 y 8: Desarrollo del Plugin y el Dashboard]
+        \textbf{Tareas:}
+        \begin{itemize}
+            \item Desarrollo del plugin de navegador utilizando Flask, HTML y JavaScript.
+            \item Desarrollo del dashboard interactivo utilizando Streamlit.
+            \item Integración del modelo de machine learning en el plugin y el dashboard.
+        \end{itemize}
+        
+        \textbf{Recursos y Herramientas:}
+        \begin{itemize}
+            \item Google Documents/LaTeX para la elaboración de la memoria.
+            \item Flask, HTML, JavaScript, Streamlit, Python, GitHub, Trello.
+            \item Directrices y normativa del TFM proporcionadas por la universidad para asegurar el cumplimiento en la presentación y documentación.
+
+        \end{itemize}
+        \textbf{Retrospectiva:} Revisión del funcionamiento del plugin y el dashboard, pruebas de usuario.\\
+        \textbf{Hito:} Plugin y dashboard desarrollados e integrados (21 de Julio - 10 de Agosto).
+
+
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[sprintbox, title= Sprint 9:  Redacción de la Memoria y Preparación de la Presentación]
+        \textbf{Tareas:}
+        \begin{itemize}
+            \item Redacción de la memoria del proyecto.
+
+            \item Preparación de la presentación en PowerPoint.
+
+            \item Revisión final y corrección de la memoria y la presentación.
+
+            
+        \end{itemize}
+       
+        \textbf{Retrospectiva:}  Revisión de la memoria y la presentación con el tutor, ajustes finales.\\
+        \textbf{Hito:} Borrador del 80 del trabajo entregado (29 de Julio), memoria completa entregada (9 de Septiembre), presentación y defensa ante el tribunal (15 de Septiembre).
+
+    \end{tcolorbox}
+
+\end{tcolorbox}
+\medskip
+
+El diagrama de Grantt es el siguiente:
+\bigskip        
+
+\begin{sideways}
+    \begin{ganttchart}[
+    hgrid,
+    vgrid={*1{blue, dashed}},
+    x unit=0.4cm,
+    y unit title=0.6cm,
+    y unit chart=0.6cm,
+    title/.append style={draw=none, fill=blue!20},
+    title label font=\bfseries\footnotesize,
+    bar/.append style={fill=blue!30},
+    bar height=0.6,
+    group right shift=0,
+    group top shift=0.7,
+    group height=.3,
+    group peaks height=.2
+    ]{1}{24}
+    % Labels
+    \gantttitle{2024}{24} \\
+    \gantttitlelist{1,...,12}{2} \\
+    % Fases
+    \ganttgroup{Fase de Inicio}{1}{4} \\
+    \ganttbar{Sprint 1: Plan de Trabajo}{1}{4} \\
+    \ganttbar{Hito 1}{4}{4} \\
+    \ganttgroup{Fase de Diseño y Análisis}{5}{8} \\
+    \ganttbar{Sprint 2 y 3: Análisis y Diseño}{5}{8} \\
+    \ganttbar{Hito 2}{8}{8} \\
+    \ganttgroup{Fase de Implementación y Pruebas}{9}{12} \\
+    \ganttbar{Sprint 4 a 6: Pruebas}{9}{12} \\
+    \ganttbar{Hito 3}{12}{12} \\
+    \ganttgroup{Fase de Documentación}{13}{16} \\
+    \ganttbar{Sprint 7 y 8: Memoria y Presentación}{13}{16} \\
+    \ganttbar{Hito 4}{16}{16} \\
+    \ganttgroup{Fase de Presentación y Defensa}{17}{20} \\
+    \ganttbar{Sprint 9: Defensa}{17}{20} \\
+    \ganttbar{PV}{20}{20} \\
+\end{ganttchart}
+\end{sideways}
+\newpage

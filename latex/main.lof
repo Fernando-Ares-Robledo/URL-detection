@@ -1,0 +1,26 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Partes de una URL}}{13}{figure.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Página Original de Discord}}{17}{figure.2}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Clon de Discord Detectado por Google}}{17}{figure.3}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Clon de Discord No Detectado por Google}}{17}{figure.4}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Fases del Proyecto y Asignaturas del Máster}}{19}{figure.5}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Arquitectura del Sistema: Dataset, Preprocesamiento y Base de Datos}}{20}{figure.6}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Selección de Modelos e Implementación en Tiempo Real}}{20}{figure.7}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Distribuciones de las características principales de las \glspl {url}.}}{33}{figure.8}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Mapa de correlación entre las características extraídas de las \glspl {url}.}}{34}{figure.9}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Precisión de Validación para Diferentes Modelos}}{36}{figure.10}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Precisión de Prueba para Diferentes Modelos}}{36}{figure.11}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Porcentaje de Falsos Positivos en Validación para Diferentes Modelos}}{37}{figure.12}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Porcentaje de Falsos Positivos en Prueba para Diferentes Modelos}}{37}{figure.13}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Porcentaje de Falsos Negativos en Validación para Diferentes Modelos}}{38}{figure.14}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Porcentaje de Falsos Negativos en Prueba para Diferentes Modelos}}{38}{figure.15}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Análisis de la URL de Facebook.}}{40}{figure.16}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Análisis de una URL maliciosa clon de Discord.}}{41}{figure.17}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Análisis de la URL oficial de Discord.}}{41}{figure.18}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Análisis de la URL de YouTube.}}{42}{figure.19}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Análisis de una URL maliciosa proxy de Discord.}}{42}{figure.20}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Análisis de una URL maliciosa ignorando la advertencia del navegador.}}{43}{figure.21}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Interfaz de análisis de URL}}{44}{figure.22}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Vista del dashboard con estadísticas de URLs}}{44}{figure.23}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Análisis de URL Benigna}}{45}{figure.24}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Interfaz de análisis de URL interactiva}}{46}{figure.25}%

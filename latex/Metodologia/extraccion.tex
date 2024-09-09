@@ -1,0 +1,102 @@
+\subsection{Extracción de Características}
+
+La extracción de características de las \glspl{url} se realiza mediante un \gls{script} en Python, el cual está disponible en el repositorio de GitHub (\url{https://github.com/Fernando-Ares-Robledo/URL-detection}). Este \gls{script} se encarga de procesar cada \gls{url} y almacenar las características extraídas en una tabla llamada \texttt{CaracteristicasURLs} en la base de datos PostgreSQL. A continuación, se describen las principales funcionalidades del \gls{script} y las características extraídas.
+
+\subsubsection*{Descripción del Script}
+
+El \gls{script} realiza las siguientes acciones:
+
+\begin{enumerate}
+    \item Conexión a la base de datos PostgreSQL y creación de la tabla \texttt{CaracteristicasURLs} si no existe.
+    \item Procesamiento de cada \gls{url}, asegurando que comiencen con \texttt{http://} o \texttt{https://}.
+    \item Extracción de características relacionadas con la longitud de la \gls{url}, la cantidad de ciertos caracteres, y otras propiedades léxicas.
+    \item Resolución del dominio a una dirección IP y obtención de su ubicación geográfica.
+    \item Verificación de la presencia de palabras sospechosas, cadenas hexadecimales y redirecciones.
+    \item Extracción de información de \gls{whois} y verificación del estado del dominio.
+    \item Verificación de si la \gls{url} está indexada en Google y si contiene scripts o caracteres no decodificables.
+    \item Inserción de las características extraídas en la tabla \texttt{CaracteristicasURLs}.
+\end{enumerate}
+
+\subsubsection*{Características Extraídas}
+
+A continuación, se describen las características extraídas por el \gls{script}:
+
+\begin{itemize}
+    \item \texttt{url} (text): La \gls{url} completa.
+    \item \texttt{longitud} (integer): Longitud de la \gls{url}.
+    \item \texttt{cantidad\_digitos} (integer): Cantidad de dígitos en la \gls{url}.
+    \item \texttt{cantidad\_letras} (integer): Cantidad de letras en la \gls{url}.
+    \item \texttt{count\_punto} (integer): Cantidad de puntos (\texttt{.}) en la \gls{url}.
+    \item \texttt{count\_guion} (integer): Cantidad de guiones (\texttt{-}) en la \gls{url}.
+    \item \texttt{count\_guion\_bajo} (integer): Cantidad de guiones bajos (\texttt{\_}) en la \gls{url}.
+    \item \texttt{count\_slash} (integer): Cantidad de barras (\texttt{/}) en la \gls{url}.
+    \item \texttt{count\_interrogacion} (integer): Cantidad de signos de interrogación (\texttt{?}) en la \gls{url}.
+    \item \texttt{count\_igual} (integer): Cantidad de signos de igual (\texttt{=}) en la \gls{url}.
+    \item \texttt{count\_arroba} (integer): Cantidad de arrobas (\texttt{@}) en la \gls{url}.
+    \item \texttt{count\_ampersand} (integer): Cantidad de ampersands (\texttt{\&}) en la \gls{url}.
+    \item \texttt{count\_exclamacion} (integer): Cantidad de signos de exclamación (\texttt{!}) en la \gls{url}.
+    \item \texttt{count\_espacio} (integer): Cantidad de espacios (\texttt{ }) en la \gls{url}.
+    \item \texttt{count\_tilde} (integer): Cantidad de tildes (\texttt{\textasciitilde}) en la \gls{url}.
+    \item \texttt{count\_coma} (integer): Cantidad de comas (\texttt{,}) en la \gls{url}.
+    \item \texttt{count\_mas} (integer): Cantidad de signos de más (\texttt{+}) en la \gls{url}.
+    \item \texttt{count\_asterisco} (integer): Cantidad de asteriscos (\texttt{*}) en la \gls{url}.
+    \item \texttt{count\_numeral} (integer): Cantidad de numerales (\texttt{\#}) en la \gls{url}.
+    \item \texttt{count\_dolar} (integer): Cantidad de signos de dólar (\texttt{\$}) en la \gls{url}.
+    \item \texttt{count\_porcentaje} (integer): Cantidad de signos de porcentaje (\texttt{\%}) en la \gls{url}.
+    \item \texttt{domain} (text): Dominio de la \gls{url}.
+    \item \texttt{domain\_length} (integer): Longitud del dominio.
+    \item \texttt{cantidad\_vocales\_dominio} (integer): Cantidad de vocales en el dominio.
+    \item \texttt{dominio\_resuelve\_a\_ip} (boolean): Indica si el dominio se resuelve a una dirección IP.
+    \item \texttt{directory} (text): Directorio de la \gls{url}.
+    \item \texttt{directory\_length} (integer): Longitud del directorio.
+    \item \texttt{file} (text): Archivo de la \gls{url}.
+    \item \texttt{file\_length} (integer): Longitud del archivo.
+    \item \texttt{parameters} (text): Parámetros de la \gls{url}.
+    \item \texttt{parameters\_length} (integer): Longitud de los parámetros.
+    \item \texttt{tld} (text): \gls{tld} del dominio.
+    \item \texttt{tld\_present} (boolean): Indica si el \gls{tld} está presente en la base de datos.
+    \item \texttt{numero\_parametros} (integer): Número de parámetros en la \gls{url}.
+    \item \texttt{email\_presente} (boolean): Indica si hay un correo electrónico en la \gls{url}.
+    \item \texttt{tls\_version} (text): Versión de \gls{tls} utilizada.
+    \item \texttt{tld\_type} (text): Tipo de \gls{tld}.
+    \item \texttt{tld\_manager} (text): Administrador del \gls{tld}.
+    \item \texttt{whois\_registrar} (text): Registrador de \gls{whois}.
+    \item \texttt{whois\_creation\_date} (timestamp): Fecha de creación de \gls{whois}.
+    \item \texttt{whois\_expiration\_date} (timestamp): Fecha de expiración de \gls{whois}.
+    \item \texttt{whois\_updated\_date} (timestamp): Fecha de actualización de \gls{whois}.
+    \item \texttt{whois\_status} (text): Estado de \gls{whois}.
+    \item \texttt{es\_acortada} (boolean): Indica si la \gls{url} está acortada.
+    \item \texttt{numero\_subdominios} (integer): Número de subdominios.
+    \item \texttt{entropia\_sld} (float): Entropía del \gls{sld}.
+    \item \texttt{ciudad} (text): Ciudad de la IP.
+    \item \texttt{pais} (text): País de la IP.
+    \item \texttt{lon}(float): longitud.
+    \item \texttt{lat}(float): latitud.
+    \item \texttt{dominio\_benigno} (integer): Indica si el dominio es benigno (1), malicioso (-1) o desconocido (0).
+    \item \texttt{tiene\_palabras\_sospechosas} (boolean): Indica si contiene palabras sospechosas.
+    \item \texttt{palabras\_detectadas} (text): Palabras sospechosas detectadas.
+    \item \texttt{tiene\_hexadecimal} (boolean): Indica si contiene cadenas hexadecimales.
+    \item \texttt{redirige} (boolean): Indica si la \gls{url} redirige.
+    \item \texttt{esta\_registrada} (boolean): Indica si el dominio está registrado.
+    \item \texttt{esta\_online} (boolean): Indica si la \gls{url} está en línea.
+    \item \texttt{tiene\_directorios} (boolean): Indica si contiene directorios.
+    \item \texttt{tiene\_file} (boolean): Indica si contiene un archivo.
+    \item \texttt{edad\_dominio} (integer): Edad del dominio en días.
+    \item \texttt{tiempo\_restante} (integer): Tiempo restante hasta la expiración del dominio en días.
+    \item \texttt{queries\_buenas} (boolean): Indica si contiene \glspl{query} buenas.
+    \item \texttt{queries\_malas} (boolean): Indica si contiene \glspl{query} malas.
+    \item \texttt{maligna} (boolean): Indica si la \gls{url} es maliciosa.
+    \item \texttt{tiene\_puerto} (boolean): Indica si contiene un puerto.
+    \item \texttt{dominio\_es\_ip} (boolean): Indica si el dominio es una IP.
+    \item \texttt{usa\_https} (boolean): Indica si usa HTTPS.
+    \item \texttt{indexada\_en\_google} (boolean): Indica si está indexada en Google.
+    \item \texttt{tiene\_tls} (boolean): Indica si tiene \gls{tls}.
+    \item \texttt{dominio\_registrado} (boolean): Indica si el dominio está registrado.
+    \item \texttt{contiene\_scripts} (boolean): Indica si contiene scripts.
+    \item \texttt{contiene\_caracteres\_no\_decodificables} (boolean): Indica si contiene caracteres no decodificables.
+    \item \texttt{tiene\_iframe}(bolean): Indica si contiene un iframe en la web.
+    \item \texttt{tiempo\_respuesta}(float): Indica el tiempo respuesta entre servidor y cliente.
+    \item \texttt{tiene\_redes\_sociales}(bolean): Indica tiene alguna red social.
+\end{itemize}
+
+La tabla \texttt{CaracteristicasURLs} almacena todas estas características para cada \gls{url} procesada. Estas características serán utilizadas en las siguientes fases del proyecto para el entrenamiento y evaluación de modelos de \textit{machine learning}.

@@ -1,0 +1,121 @@
+\subsubsection{Etapas}
+
+
+Las etapas del ataque de Ransomware son:
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\begin{figure}[H]
+\centering
+
+\smartdiagramset{
+    set color list={cyan!20, cyan!30, cyan!40, violet!50, cyan!60}, % Ajuste de colores a tonos de azul
+    sequence item border color=teal!80, % Color de los bordes de los ítems
+    sequence item text color=black,
+    sequence item border size=1.5\pgflinewidth,
+    sequence item font size=\scriptsize\sffamily,
+    additions={
+        additional item shape=rectangle,
+        additional item fill color=cyan!10, % Color de relleno de los ítems adicionales
+        additional item border color=teal!80, % Color del borde de los ítems adicionales
+        additional arrow line width=2pt,
+        additional arrow tip=to,
+        additional arrow color=blue!80, % Color de las flechas adicionales
+        additional item font=\scriptsize\sffamily,
+        additional item text width=3.5cm,
+      }
+}
+\smartdiagramadd[sequence diagram]{Acceso inicial,Ejecución, Acción sobre objetivos, Chantaje, Negociación de rescate}{
+  above of sequence-item1/{Es la fase donde el ransomware logra infiltrarse en el sistema. Puede ocurrir por diferentes medios, como phishing, explotación de vulnerabilidades, o descarga maliciosa.},
+  below of sequence-item2/{Una vez dentro del sistema, el ransomware se ejecuta, comenzando el proceso de cifrado de archivos o bloqueo del acceso al sistema.},
+  above of sequence-item3/{El ransomware lleva a cabo su propósito principal, que es cifrar archivos críticos y sistemas para hacerlos inaccesibles para el usuario o administrador.},
+  below of sequence-item4/{Esta es la fase de comunicación con la víctima, donde los atacantes informan sobre el cifrado y exigen un pago, generalmente en criptomonedas, a cambio de la clave de descifrado.},
+  above of sequence-item5/{En algunos casos, puede haber un intercambio entre los atacantes y la víctima para negociar el monto del rescate, aunque no se recomienda hacer pagos ya que no garantiza la recuperación de los datos y puede incentivar a los criminales a continuar con sus actividades ilícitas.}
+}
+\smartdiagramconnect{to-}{sequence-item1/additional-module1}
+\smartdiagramconnect{to-}{sequence-item2/additional-module2}
+\smartdiagramconnect{to-}{sequence-item3/additional-module3}
+\smartdiagramconnect{to-}{sequence-item4/additional-module4}
+\smartdiagramconnect{to-}{sequence-item5/additional-module5}
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\caption{Etapas del funcionamiento de un ataque rasomware \autocite{enisa2022ransomware}.}
+\end{figure}
+\bigskip
+
+\subsubsection{Vectores de ataque}
+
+\definecolor{sprintcolor}{RGB}{210,220,230}
+\definecolor{tableheadcolor2}{HTML}{82B1ED}
+\definecolor{rulecolor}{HTML}{23E1E8}
+\definecolor{cellcolor}{HTML}{b3d9ff}
+\definecolor{tableheadcolor}{HTML}{e5f7ff}
+\newcolumntype{L}{>{\hsize=.6\hsize\centering\arraybackslash}X} % Columnas más estrechas
+\newcolumntype{k}{>{\hsize=1\hsize\centering\arraybackslash}X} 
+\newcolumntype{R}{>{\hsize=1.4\hsize\centering\arraybackslash}X} 
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\tcbset{
+  tab2/.style={
+    enhanced,
+    fonttitle=\bfseries,
+    %fontupper=\small\sffamily,
+    colback=white!10!white, % Fondo del cuerpo del box
+    colframe= tableheadcolor2, % Color del borde del box
+    colbacktitle=tableheadcolor2, % Usamos el color personalizado para la cabecera
+    coltitle=black,
+    center title,
+    toprule=rulecolor, % Color de la regla superior
+    bottomrule=rulecolor, % Color de la regla inferior
+    leftrule=rulecolor, % Color de la regla izquierda
+    rightrule=rulecolor
+  }
+}
+
+
+\begin{table}[H]
+\centering
+\begin{tcolorbox}[tab2,tabularx={L||k|R}]
+    \small
+    \centering
+    \cellcolor{tableheadcolor}Vector& \cellcolor{tableheadcolor} Tipos & \cellcolor{tableheadcolor} Descripcion\\
+    \hline
+    \hline
+    Phising& 
+       
+    Correo o SMS
+    Navegación web
+    Aplicaciones web, portales corporativos, app o intranet y redes sociales
+        
+    & Este vector incluye métodos engañosos para obtener información sensible de los usuarios, como sus credenciales, a través de comunicaciones que parecen ser de confianza. Los atacantes se hacen pasar por entidades legítimas y utilizan la ingeniería social para inducir a los usuarios a realizar acciones que comprometan su seguridad.  \\
+    \hline
+    Explotación de Vulnerabilidades & 
+        
+    Navegación Web
+    Endpoints, terminales y dispositivos IoT
+    Aplicaciones web, portales corporativos, app o intranet y redes sociales
+    Sistemas y elementos de red
+        
+    & Este vector se centra en el aprovechamiento de debilidades técnicas en software, hardware y configuraciones de seguridad. Los atacantes buscan y explotan fallos de seguridad para obtener acceso no autorizado o causar otros daños.\\
+    \hline
+    Abuso de Credenciales & 
+        
+    Uso de contraseñas débiles o por defecto
+    Contraseñas comprometidas
+    Insider/Sobornos
+    Carencias del cifrado
+    Debilidades de la cadena de suministro
+    &Implica la utilización indebida de información de acceso de usuarios, ya sea obtenida a través de técnicas como el keylogging, fuerza bruta, o ingeniería social, o bien debido a negligencias como el uso de contraseñas predeterminadas o la falta de gestión adecuada de las políticas de cifrado.\\
+\end{tcolorbox}
+\caption{Vectores más comunes de los ataques rasonware \autocite{incibe2023vectores}.}
+\end{table}

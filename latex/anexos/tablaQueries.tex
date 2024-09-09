@@ -1,0 +1,315 @@
+\subsection{Anexo: Tabla Queries}
+
+\subsection*{Descarga y Procesamiento de Queries desde GitHub}
+
+Este script en Python descarga archivos de texto con buenas y malas queries, verifica si las queries ya existen en la base de datos, y agrega las nuevas entradas.
+
+\begin{lstlisting}[language=Python, caption=Script para procesar queries desde archivos de texto]
+import requests
+import psycopg2
+from psycopg2 import sql
+
+# Configuración de la conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="url",
+    user="postgres",
+    password="1234",
+    host="localhost",
+    port="5432"
+)
+cur = conn.cursor()
+
+# URLs de los archivos de queries en GitHub
+good_queries_url = 'https://raw.githubusercontent.com/faizann24/Fwaf-Machine-Learning-driven-Web-Application-Firewall/master/goodqueries.txt'
+bad_queries_url = 'https://raw.githubusercontent.com/faizann24/Fwaf-Machine-Learning-driven-Web-Application-Firewall/master/badqueries.txt'
+
+# Función para descargar y leer archivos de texto
+def download_and_read_text(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text.splitlines()
+
+# Descargar y leer los archivos de queries
+good_queries = download_and_read_text(good_queries_url)
+bad_queries = download_and_read_text(bad_queries_url)
+
+# Crear la tabla de queries si no existe
+cur.execute("""
+CREATE TABLE IF NOT EXISTS Queries (
+    id SERIAL PRIMARY KEY,
+    query TEXT NOT NULL,
+    buena BOOLEAN NOT NULL
+)
+""")
+conn.commit()
+
+# Función para procesar y agregar queries a la base de datos
+def process_and_insert_queries(queries, buena):
+    for query in queries:
+        # Comprobar si la query ya está en la base de datos
+        cur.execute("SELECT EXISTS(SELECT 1 FROM Queries WHERE query=%s)", (query,))
+        exists = cur.fetchone()[0]
+
+        if not exists:
+            # Insertar la query en la base de datos
+            cur.execute(
+                sql.SQL("INSERT INTO Queries (query, buena) VALUES (%s, %s)"),
+                (query, buena)
+            )
+    conn.commit()
+
+# Procesar y agregar las good queries
+process_and_insert_queries(good_queries, True)
+
+# Procesar y agregar las bad queries
+process_and_insert_queries(bad_queries, False)
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+
+print("Proceso completado.")
+\end{lstlisting}
+
+\subsection*{Explicación del Código}
+
+\begin{itemize}
+    \item \textbf{Configuración de la Conexión}: Se configura la conexión a la base de datos PostgreSQL con las credenciales y parámetros correspondientes.
+    \item \textbf{URLs de los Archivos de Queries en GitHub}: Se definen las URLs de los archivos de queries de buenas y malas en GitHub.
+    \item \textbf{Función para Descargar y Leer Archivos de Texto}: Se define una función para descargar y leer los archivos de texto desde las URLs proporcionadas.
+    \item \textbf{Descarga y Lectura de los Archivos de Queries}: Se descargan y leen los archivos de queries.
+    \item \textbf{Creación de la Tabla de Queries}: Se crea la tabla \texttt{Queries} con columnas \texttt{id}, \texttt{query} y \texttt{buena} si no existe.
+    \item \textbf{Función para Procesar y Agregar Queries a la Base de Datos}: Se define una función para procesar los datos y agregarlos a la base de datos.
+    \item \textbf{Verificación y Adición de Queries}: Se verifica si la query ya existe en la base de datos para evitar duplicados y se insertan las queries en la base de datos con las etiquetas correspondientes (\texttt{buena=True} o \texttt{buena=False}).
+    \item \textbf{Procesamiento de Good Queries y Bad Queries}: Se procesan y agregan las good queries y bad queries a la base de datos.
+    \item \textbf{Cierre de la Conexión}: Se cierra la conexión a la base de datos.
+\end{itemize}
+
+
+
+
+\chapter*{Anexo: Creación de Tabla con Palabras Sospechosas y Comunes}
+
+\section*{Descarga y Almacenamiento de Palabras}
+
+Este script en Python descarga listas de palabras sospechosas y comunes, y las almacena en una tabla de la base de datos PostgreSQL para su posterior análisis.
+
+\begin{lstlisting}[language=Python, caption=Script para crear y poblar la tabla de palabras sospechosas y comunes]
+import psycopg2
+from psycopg2 import sql
+import requests
+
+# Configuración de la conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="url",
+    user="postgres",
+    password="1234",
+    host="localhost",
+    port="5432"
+)
+cur = conn.cursor()
+
+# URLs de las listas de palabras
+suspicious_words_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/raft-large-words.txt'
+common_passwords_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10k-most-common.txt'
+
+# Función para descargar y leer archivos de texto
+def download_and_read_text(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text.splitlines()
+
+# Descargar y leer las listas de palabras
+suspicious_words = download_and_read_text(suspicious_words_url)
+common_passwords = download_and_read_text(common_passwords_url)
+
+# Crear la tabla de palabras si no existe
+cur.execute("""
+CREATE TABLE IF NOT EXISTS Palabras (
+    id SERIAL PRIMARY KEY,
+    palabra TEXT NOT NULL,
+    tipo TEXT NOT NULL
+)
+""")
+conn.commit()
+
+# Función para insertar palabras en la base de datos
+def insert_words(words, tipo):
+    data_to_insert = [(word, tipo) for word in words]
+    cur.executemany(
+        sql.SQL("INSERT INTO Palabras (palabra, tipo) VALUES (%s, %s) ON CONFLICT DO NOTHING"),
+        data_to_insert
+    )
+    conn.commit()
+
+# Insertar las palabras sospechosas y comunes en la base de datos
+insert_words(suspicious_words, 'suspicious')
+insert_words(common_passwords, 'common_password')
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+
+print("Proceso completado.")
+\end{lstlisting}
+
+\section*{Explicación del Código}
+
+\begin{itemize}
+    \item \textbf{Configuración de la Conexión}: Se configura la conexión a la base de datos PostgreSQL con las credenciales y parámetros correspondientes.
+    \item \textbf{URLs de las Listas de Palabras}: Se definen las URLs de las listas de palabras sospechosas y comunes.
+    \item \textbf{Función para Descargar y Leer Archivos de Texto}: La función \texttt{download\_and\_read\_text} descarga y lee los archivos de texto desde las URLs proporcionadas.
+    \item \textbf{Descarga y Lectura de las Listas de Palabras}: Se descargan y leen las listas de palabras sospechosas y comunes.
+    \item \textbf{Creación de la Tabla de Palabras}: Se crea la tabla \texttt{Palabras} con columnas \texttt{id}, \texttt{palabra} y \texttt{tipo} si no existe.
+    \item \textbf{Función para Insertar Palabras en la Base de Datos}: La función \texttt{insert\_words} inserta las palabras en la base de datos, etiquetándolas como \texttt{suspicious} o \texttt{common\_password}.
+    \item \textbf{Inserción de Palabras}: Se insertan las palabras sospechosas y comunes en la base de datos.
+    \item \textbf{Cierre de la Conexión}: Se cierra la conexión a la base de datos.
+\end{itemize}
+
+
+\chapter*{Anexo: Creación y Población de Tablas WHOIS y Geolocalización}
+
+\section*{Creación de Tablas}
+
+Este script en Python crea las tablas \texttt{WHOIS} y \texttt{Geolocalizacion} para almacenar información WHOIS y de geolocalización para los dominios asociados con las URLs.
+
+\begin{lstlisting}[language=Python, caption=Creación de las tablas WHOIS y Geolocalizacion]
+import psycopg2
+
+# Configuración de la conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="url",
+    user="postgres",
+    password="1234",
+    host="localhost",
+    port="5432"
+)
+cur = conn.cursor()
+
+# Crear la tabla WHOIS si no existe
+cur.execute("""
+CREATE TABLE IF NOT EXISTS WHOIS (
+    id SERIAL PRIMARY KEY,
+    domain TEXT NOT NULL,
+    creation_date DATE,
+    expiration_date DATE,
+    registrant_name TEXT,
+    registrant_organization TEXT,
+    registrant_country TEXT,
+    FOREIGN KEY (domain) REFERENCES TablaURL (url)
+)
+""")
+conn.commit()
+
+# Crear la tabla Geolocalizacion si no existe
+cur.execute("""
+CREATE TABLE IF NOT EXISTS Geolocalizacion (
+    id SERIAL PRIMARY KEY,
+    ip TEXT NOT NULL,
+    country TEXT,
+    region TEXT,
+    city TEXT,
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION,
+    FOREIGN KEY (ip) REFERENCES TablaURL (url)
+)
+""")
+conn.commit()
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+
+print("Tablas WHOIS y Geolocalizacion creadas exitosamente.")
+\end{lstlisting}
+
+
+
+\section*{Explicación del Código}
+
+\begin{itemize}
+    \item \textbf{Configuración de la Conexión}: Se configura la conexión a la base de datos PostgreSQL con las credenciales y parámetros correspondientes.
+    \item \textbf{Creación de la Tabla WHOIS}: La tabla \texttt{WHOIS} almacena información WHOIS para dominios asociados con las URLs.
+    \item \textbf{Creación de la Tabla Geolocalizacion}: La tabla \texttt{Geolocalizacion} almacena datos de geolocalización para las IPs asociadas con las URLs.
+    \item \textbf{Cierre de la Conexión}: Se cierra la conexión a la base de datos.
+\end{itemize}
+
+
+\chapter*{Anexo: Creación y Población de la Tabla de TLDs}
+
+\section*{Creación de la Tabla TLDs}
+
+Este script en Python crea una tabla \texttt{TLDs} para almacenar información sobre los Top-Level Domains (TLDs) y sus características.
+
+\begin{lstlisting}[language=Python, caption=Creación de la tabla TLDs con restricción única]
+import requests
+import psycopg2
+from psycopg2 import sql
+from bs4 import BeautifulSoup
+
+# Configuración de la conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="url",
+    user="postgres",
+    password="1234",
+    host="localhost",
+    port="5432"
+)
+cur = conn.cursor()
+
+# Crear la tabla TLDs si no existe con una restricción única en la columna DOMAIN
+cur.execute("""
+CREATE TABLE IF NOT EXISTS TLDs (
+    id SERIAL PRIMARY KEY,
+    domain TEXT NOT NULL UNIQUE,
+    type TEXT,
+    tld_manager TEXT
+)
+""")
+conn.commit()
+
+# Función para obtener TLDs de IANA
+def get_tlds_from_iana():
+    url = 'https://www.iana.org/domains/root/db'
+    response = requests.get(url)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, 'html.parser')
+    tld_list = []
+
+    for row in soup.select('table tbody tr'):
+        columns = row.find_all('td')
+        if len(columns) >= 3:
+            domain = columns[0].text.strip()
+            tld_type = columns[1].text.strip()
+            tld_manager = columns[2].text.strip()
+            tld_list.append((domain, tld_type, tld_manager))
+
+    return tld_list
+
+# Obtener TLDs y sus características
+tlds = get_tlds_from_iana()
+
+# Insertar TLDs en la base de datos
+cur.executemany(
+    sql.SQL("INSERT INTO TLDs (domain, type, tld_manager) VALUES (%s, %s, %s) ON CONFLICT (domain) DO NOTHING"),
+    tlds
+)
+conn.commit()
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+
+print("Tabla TLDs creada y poblada exitosamente.")
+\end{lstlisting}
+
+\section*{Explicación del Código}
+
+\begin{itemize}
+    \item \textbf{Configuración de la Conexión}: Se configura la conexión a la base de datos PostgreSQL con las credenciales y parámetros correspondientes.
+    \item \textbf{Creación de la Tabla TLDs con Restricción Única}: La tabla \texttt{TLDs} almacena información sobre los TLDs y sus características, y la columna \texttt{domain} se define como \texttt{UNIQUE}.
+    \item \textbf{Función para Obtener TLDs de IANA}: La función \texttt{get\_tlds\_from\_iana} descarga y analiza la lista de TLDs de IANA.
+    \item \textbf{Inserción de TLDs en la Base de Datos}: Se insertan los TLDs y sus características en la tabla \texttt{TLDs}. La cláusula \texttt{ON CONFLICT (domain) DO NOTHING} asegura que los dominios duplicados no se inserten.
+    \item \textbf{Cierre de la Conexión}: Se cierra la conexión a la base de datos.
+\end{itemize}
+

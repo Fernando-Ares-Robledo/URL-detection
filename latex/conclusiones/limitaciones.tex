@@ -1,0 +1,15 @@
+\subsection{Limitaciones}
+
+El sistema de detección de URLs maliciosas desarrollado presenta varias limitaciones que deben tenerse en cuenta:
+
+\begin{itemize}
+    \item \textbf{Dependencia de la Disponibilidad de la URL:} El \textit{extractor}, que es una clase en \textit{Python}, depende de que la URL esté en línea para extraer ciertas características, como la presencia de scripts o caracteres no decodificables. Si el servidor donde está alojada la URL está muy lejos, el tiempo de extracción de características puede aumentar significativamente.
+    
+    \item \textbf{Rapidez del Cambio de las URLs:} Las URLs maliciosas cambian rápidamente. Los atacantes crean clones muy buenos de sitios legítimos que son difíciles de detectar. Además, las URLs maliciosas activas son difíciles de encontrar porque suelen ser eliminadas rápidamente por las autoridades o los atacantes las mantienen en línea solo por un corto periodo para evitar ser rastreadas.
+
+    \item \textbf{Contenido Dinámico y Malicioso:} Hay sitios web que inicialmente son benignos (como \textit{GitHub}), pero que pueden alojar contenido malicioso que los usuarios pueden descargar. Asimismo, sitios como \textit{Mil Anuncios} pueden tener anuncios que son fraudulentos, aunque el sitio en sí no lo sea.
+
+    \item \textbf{Limitaciones del Modelo:} Los modelos de \textit{machine learning} utilizados son buenos para detectar URLs maliciosas basándose en sus características, pero no analizan el contenido dentro de la página ni las acciones de los scripts presentes. Esto significa que el sistema puede no detectar actividades maliciosas que ocurren una vez que se carga la página.
+
+    \item \textbf{Disponibilidad de Datos Maliciosos:} Es difícil obtener un conjunto de datos suficientemente amplio y representativo de URLs maliciosas activas. Muchas de estas URLs son eliminadas rápidamente, lo que dificulta su recopilación y análisis en tiempo real.
+\end{itemize}

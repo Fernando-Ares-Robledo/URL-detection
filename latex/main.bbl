@@ -1,0 +1,750 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{acosta2023espana}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=d70b265bb5e1b55f06ea20dc044d3904}{%
+           family={Acosta},
+           familyi={A\bibinitperiod},
+           given={T.\bibnamedelimi A.},
+           giveni={T\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{d70b265bb5e1b55f06ea20dc044d3904}
+      \strng{fullhash}{d70b265bb5e1b55f06ea20dc044d3904}
+      \strng{bibnamehash}{d70b265bb5e1b55f06ea20dc044d3904}
+      \strng{authorbibnamehash}{d70b265bb5e1b55f06ea20dc044d3904}
+      \strng{authornamehash}{d70b265bb5e1b55f06ea20dc044d3904}
+      \strng{authorfullhash}{d70b265bb5e1b55f06ea20dc044d3904}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2023-10-20}
+      \field{title}{España registró 374.737 ciberdelitos en 2022}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.interior.gob.es/opencms/es/detalle/articulo/Espana-registro-374.737-ciberdelitos-en-2022/
+      \endverb
+      \verb{url}
+      \verb https://www.interior.gob.es/opencms/es/detalle/articulo/Espana-registro-374.737-ciberdelitos-en-2022/
+      \endverb
+    \endentry
+    \entry{konradt2016phishing}{article}{}
+      \name{author}{3}{}{%
+        {{hash=6ecccc868fa92a330161dd530da78c01}{%
+           family={Konradt},
+           familyi={K\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=bf37a9a6822a334d7affee8ebbeb5e1f}{%
+           family={Schilling},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d2cd266fbd52ba3144dbef97bf08050c}{%
+           family={Werners},
+           familyi={W\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{d8979eb9d45f03e9f683bb87967449a6}
+      \strng{fullhash}{d8979eb9d45f03e9f683bb87967449a6}
+      \strng{bibnamehash}{d8979eb9d45f03e9f683bb87967449a6}
+      \strng{authorbibnamehash}{d8979eb9d45f03e9f683bb87967449a6}
+      \strng{authornamehash}{d8979eb9d45f03e9f683bb87967449a6}
+      \strng{authorfullhash}{d8979eb9d45f03e9f683bb87967449a6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computers \& Security}
+      \field{title}{Phishing: An economic analysis of cybercrime perpetrators}
+      \field{volume}{58}
+      \field{year}{2016}
+      \field{pages}{39\bibrangedash 46}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/j.cose.2015.12.001
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.cose.2015.12.001
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.cose.2015.12.001
+      \endverb
+    \endentry
+    \entry{liu2023malicious}{misc}{}
+      \name{author}{6}{}{%
+        {{hash=47fa1cfa42f039e59f4e014c1941c712}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=61ad10c626e1d641e0b1d7b5f48d3233}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=c0614e3cda3d136f04f8e826877d2c3d}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=944180114dace511f42bf839b01388aa}{%
+           family={Qin},
+           familyi={Q\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=ce084360cc68e7db4fe6cae1287b3adf}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=68bd613c80ef7cb7b4d7d333770ab71c}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{477a748fe8b6a0a82de0860b0a77748d}
+      \strng{fullhash}{1a471cc737679c4996217bd2d51eaae4}
+      \strng{bibnamehash}{477a748fe8b6a0a82de0860b0a77748d}
+      \strng{authorbibnamehash}{477a748fe8b6a0a82de0860b0a77748d}
+      \strng{authornamehash}{477a748fe8b6a0a82de0860b0a77748d}
+      \strng{authorfullhash}{1a471cc737679c4996217bd2d51eaae4}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CR}
+      \field{eprinttype}{arXiv}
+      \field{note}{Accessed: 2023-11-21}
+      \field{title}{Malicious URL detection via pretrained language model guided Multi-Level feature Attention Network}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2311.12372
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2311.12372
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2311.12372
+      \endverb
+    \endentry
+    \entry{bigdata2013}{article}{}
+      \list{publisher}{1}{%
+        {IEEE Conference Publication}%
+      }
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{Malicious URL filtering — A big data application}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/6691627
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/6691627
+      \endverb
+    \endentry
+    \entry{le2018urlnet}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=fbb2255b0cfb5129560ff101778674f4}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=5b1e183de014a961344e46603c6def4b}{%
+           family={Pham},
+           familyi={P\bibinitperiod},
+           given={Q.},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=462eed868f49bd5e1d4a80f876a22183}{%
+           family={Sahoo},
+           familyi={S\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=dbc32b0ab7980f4827e568d218c5e706}{%
+           family={Hoi},
+           familyi={H\bibinitperiod},
+           given={S.\bibnamedelimi C.\bibnamedelimi H.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{4543c2223d48eca8c0f8205612123bf4}
+      \strng{fullhash}{7e0b0cfda615334589ac044f2f7633fe}
+      \strng{bibnamehash}{4543c2223d48eca8c0f8205612123bf4}
+      \strng{authorbibnamehash}{4543c2223d48eca8c0f8205612123bf4}
+      \strng{authornamehash}{4543c2223d48eca8c0f8205612123bf4}
+      \strng{authorfullhash}{7e0b0cfda615334589ac044f2f7633fe}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CR}
+      \field{eprinttype}{arXiv}
+      \field{note}{Accessed: 2018-02-09}
+      \field{title}{URLNet: Learning a URL Representation with Deep Learning for Malicious URL Detection}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1802.03162
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1802.03162
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1802.03162
+      \endverb
+    \endentry
+    \entry{sahoo2017survey}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=462eed868f49bd5e1d4a80f876a22183}{%
+           family={Sahoo},
+           familyi={S\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=fda8a6476fa840f1f86a595e38f1212a}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=dbc32b0ab7980f4827e568d218c5e706}{%
+           family={Hoi},
+           familyi={H\bibinitperiod},
+           given={S.\bibnamedelimi C.\bibnamedelimi H.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{39e10f733c92bdf7900707c8b84d221d}
+      \strng{fullhash}{39e10f733c92bdf7900707c8b84d221d}
+      \strng{bibnamehash}{39e10f733c92bdf7900707c8b84d221d}
+      \strng{authorbibnamehash}{39e10f733c92bdf7900707c8b84d221d}
+      \strng{authornamehash}{39e10f733c92bdf7900707c8b84d221d}
+      \strng{authorfullhash}{39e10f733c92bdf7900707c8b84d221d}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CR}
+      \field{eprinttype}{arXiv}
+      \field{note}{Accessed: 2017-01-25}
+      \field{title}{Malicious URL Detection using Machine Learning: A Survey}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1701.07179
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1701.07179
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1701.07179
+      \endverb
+    \endentry
+    \entry{tavares2024evasion}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bc989f675d8eb5cee30625258983360f}{%
+           family={Tavares},
+           familyi={T\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc989f675d8eb5cee30625258983360f}
+      \strng{fullhash}{bc989f675d8eb5cee30625258983360f}
+      \strng{bibnamehash}{bc989f675d8eb5cee30625258983360f}
+      \strng{authorbibnamehash}{bc989f675d8eb5cee30625258983360f}
+      \strng{authornamehash}{bc989f675d8eb5cee30625258983360f}
+      \strng{authorfullhash}{bc989f675d8eb5cee30625258983360f}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-04}
+      \field{title}{Popular evasion techniques in the malware landscape}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.infosecinstitute.com/resources/malware-analysis/popular-evasion-techniques-in-the-malware-landscape/
+      \endverb
+      \verb{url}
+      \verb https://www.infosecinstitute.com/resources/malware-analysis/popular-evasion-techniques-in-the-malware-landscape/
+      \endverb
+    \endentry
+    \entry{defenseevasion}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a69913f66f2cfd4bd3f8ea75954ac476}{%
+           family={n.d.},
+           familyi={n\bibinitperiod}}}%
+      }
+      \strng{namehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{fullhash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{bibnamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authorbibnamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authornamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authorfullhash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \field{extraname}{1}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-04}
+      \field{title}{What is Defense evasion? Mastering Advanced Cybersecurity Techniques}
+      \verb{urlraw}
+      \verb https://cyberpedia.reasonlabs.com/EN/defense%20evasion.html
+      \endverb
+      \verb{url}
+      \verb https://cyberpedia.reasonlabs.com/EN/defense%20evasion.html
+      \endverb
+    \endentry
+    \entry{googlesafebrowsing}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=8b36e9207c24c76e6719268e49201d94}{%
+           family={Google.},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{fullhash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{bibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorbibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authornamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorfullhash}{8b36e9207c24c76e6719268e49201d94}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-04}
+      \field{title}{Google Safe Browsing}
+      \verb{urlraw}
+      \verb https://safebrowsing.google.com/
+      \endverb
+      \verb{url}
+      \verb https://safebrowsing.google.com/
+      \endverb
+    \endentry
+    \entry{phishtank}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a69913f66f2cfd4bd3f8ea75954ac476}{%
+           family={n.d.},
+           familyi={n\bibinitperiod}}}%
+      }
+      \strng{namehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{fullhash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{bibnamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authorbibnamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authornamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authorfullhash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-04}
+      \field{title}{PhishTank | Join the fight against phishing}
+      \verb{urlraw}
+      \verb https://phishtank.org/
+      \endverb
+      \verb{url}
+      \verb https://phishtank.org/
+      \endverb
+    \endentry
+    \entry{urlhaus}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a69913f66f2cfd4bd3f8ea75954ac476}{%
+           family={n.d.},
+           familyi={n\bibinitperiod}}}%
+      }
+      \strng{namehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{fullhash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{bibnamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authorbibnamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authornamehash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \strng{authorfullhash}{a69913f66f2cfd4bd3f8ea75954ac476}
+      \field{extraname}{3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-03-04}
+      \field{title}{URLhaus - Malware URL exchange}
+      \verb{urlraw}
+      \verb https://urlhaus.abuse.ch/
+      \endverb
+      \verb{url}
+      \verb https://urlhaus.abuse.ch/
+      \endverb
+    \endentry
+    \entry{sun2016automating}{article}{}
+      \name{author}{5}{}{%
+        {{hash=6e16aa4068db42a4d6a601d334f40032}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=c4d8991ceb48d3254af3ac6b2f045fd4}{%
+           family={Akiyama},
+           familyi={A\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=32dc2972fc33b0eb7b57ea4f0d0dd008}{%
+           family={Yagi},
+           familyi={Y\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=b147e5f83d64c064213a05c80856886d}{%
+           family={Hatada},
+           familyi={H\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=efec751209545026aa1f4896d8f4ff63}{%
+           family={Mori},
+           familyi={M\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{ef99c369f1912acd49e461cd82626aa9}
+      \strng{fullhash}{b41ddaca2a94e9bf24e2cc2e55044988}
+      \strng{bibnamehash}{ef99c369f1912acd49e461cd82626aa9}
+      \strng{authorbibnamehash}{ef99c369f1912acd49e461cd82626aa9}
+      \strng{authornamehash}{ef99c369f1912acd49e461cd82626aa9}
+      \strng{authorfullhash}{b41ddaca2a94e9bf24e2cc2e55044988}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEICE Transactions on Information and Systems}
+      \field{title}{Automating URL Blacklist Generation with Similarity Search Approach}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://search.ieice.org/bin/summary.php?id=e99-d_4_873
+      \endverb
+      \verb{url}
+      \verb https://search.ieice.org/bin/summary.php?id=e99-d_4_873
+      \endverb
+    \endentry
+    \entry{ieee2010lookup}{article}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Conference Publication}
+      \field{title}{A High-Performance URL lookup engine for URL filtering systems}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/5501982
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/5501982
+      \endverb
+    \endentry
+    \entry{ieee2010phishnet}{article}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Conference Publication}
+      \field{title}{PhishNet: Predictive blacklisting to detect phishing attacks}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/5462216
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/5462216
+      \endverb
+    \endentry
+    \entry{raja2022mudhr}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=50edb392523b8ec524be87b1aa19dcad}{%
+           family={Raja},
+           familyi={R\bibinitperiod},
+           given={A.\bibnamedelimi S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=1a4f69e00fa0a8c0a0930ba5e7c201bd}{%
+           family={Pradeepa},
+           familyi={P\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=275c3e9cdad8d3ff72ea7adb1329e8c6}{%
+           family={Arulkumar},
+           familyi={A\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{0fb109e93cef68ad659b57a15d3faeb2}
+      \strng{fullhash}{0fb109e93cef68ad659b57a15d3faeb2}
+      \strng{bibnamehash}{0fb109e93cef68ad659b57a15d3faeb2}
+      \strng{authorbibnamehash}{0fb109e93cef68ad659b57a15d3faeb2}
+      \strng{authornamehash}{0fb109e93cef68ad659b57a15d3faeb2}
+      \strng{authorfullhash}{0fb109e93cef68ad659b57a15d3faeb2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{AIP Conference Proceedings}
+      \field{title}{Mudhr: Malicious URL detection using heuristic rules based approach}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/5.0074077
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/5.0074077
+      \endverb
+    \endentry
+    \entry{begum2019study}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=cb0643355d216c81407ab8be20dd4c7a}{%
+           family={Begum},
+           familyi={B\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=88b48abae5a541a38b295f7c3845079e}{%
+           family={Badugu},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{1137e2e1c8c2708e8af4c41035b807bd}
+      \strng{fullhash}{1137e2e1c8c2708e8af4c41035b807bd}
+      \strng{bibnamehash}{1137e2e1c8c2708e8af4c41035b807bd}
+      \strng{authorbibnamehash}{1137e2e1c8c2708e8af4c41035b807bd}
+      \strng{authornamehash}{1137e2e1c8c2708e8af4c41035b807bd}
+      \strng{authorfullhash}{1137e2e1c8c2708e8af4c41035b807bd}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Learning and analytics in intelligent systems}
+      \field{title}{A study of malicious URL detection using machine learning and heuristic approaches}
+      \field{year}{2019}
+      \field{pages}{587\bibrangedash 597}
+      \range{pages}{11}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-030-24318-0_68
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-030-24318-0_68
+      \endverb
+    \endentry
+    \entry{ieee2017malicious}{article}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Conference Publication}
+      \field{title}{Malicious web content detection using machine learning}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/8256834
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/8256834
+      \endverb
+    \endentry
+    \entry{xu2013cross}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=d539746d8c6dcf5a0d1f2b4c4a9f59de}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=550bfa18dabddc67b208326a1ac5ba21}{%
+           family={Zhan},
+           familyi={Z\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=46dbb256845809cb692fb9fa47e8b90b}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b9c1a638f0c7c892fe88f1cb13be8b20}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{a2423fb0893f0e51872eea27547c06a5}
+      \strng{fullhash}{6cb9a4c08e936c7378f66e93f9e5d8ae}
+      \strng{bibnamehash}{a2423fb0893f0e51872eea27547c06a5}
+      \strng{authorbibnamehash}{a2423fb0893f0e51872eea27547c06a5}
+      \strng{authornamehash}{a2423fb0893f0e51872eea27547c06a5}
+      \strng{authorfullhash}{6cb9a4c08e936c7378f66e93f9e5d8ae}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{ACM Libre Academy}
+      \field{title}{Cross-layer detection of malicious websites}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2435349.2435366
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2435349.2435366
+      \endverb
+    \endentry
+    \entry{peng2019opening}{article}{}
+      \name{author}{4}{}{%
+        {{hash=3c128e64763fc44bff7a03a68d45050e}{%
+           family={Peng},
+           familyi={P\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=527f0ca92e7ed462c77915036481c907}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=6721bbdcfff2f66ff805afb174cd2773}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=394d641a0626e0504be74152c455899d}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed3556db0b67584eabc061d1be4bf43e}
+      \strng{fullhash}{f0250bf551fce13e95f451cc450d96a2}
+      \strng{bibnamehash}{ed3556db0b67584eabc061d1be4bf43e}
+      \strng{authorbibnamehash}{ed3556db0b67584eabc061d1be4bf43e}
+      \strng{authornamehash}{ed3556db0b67584eabc061d1be4bf43e}
+      \strng{authorfullhash}{f0250bf551fce13e95f451cc450d96a2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{ACM Libre Academy}
+      \field{title}{Opening the Blackbox of VirusTotal}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3355369.3355585
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3355369.3355585
+      \endverb
+    \endentry
+    \entry{ieee2017automated}{article}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Conference Publication}
+      \field{title}{Automated malicious advertisement detection using VirusTotal, URLVoid, and TrendMicro}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/7921994
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/7921994
+      \endverb
+    \endentry
+    \entry{misquitta2024comparative}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0d753a9c5c6cdc7f43a33d0de2496f9f}{%
+           family={Misquitta},
+           familyi={M\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=64c0d7d2bb81bae0ec24e5ba2a4afb63}{%
+           family={Kannan},
+           familyi={K\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5dcd1577c9d35ca7093a5f6bb92d814}
+      \strng{fullhash}{b5dcd1577c9d35ca7093a5f6bb92d814}
+      \strng{bibnamehash}{b5dcd1577c9d35ca7093a5f6bb92d814}
+      \strng{authorbibnamehash}{b5dcd1577c9d35ca7093a5f6bb92d814}
+      \strng{authornamehash}{b5dcd1577c9d35ca7093a5f6bb92d814}
+      \strng{authorfullhash}{b5dcd1577c9d35ca7093a5f6bb92d814}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{EAI/Springer Innovations in Communication and Computing}
+      \field{title}{A comparative study of malicious URL detection: regular expression analysis, machine learning, and VirusTotal API}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-031-52760-9_16
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-031-52760-9_16
+      \endverb
+    \endentry
+    \entry{ieee2021comparative}{article}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Conference Publication}
+      \field{title}{Malicious URL detection: A comparative study}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/9396014
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/9396014
+      \endverb
+    \endentry
+    \entry{fejrskov2021using}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=cdef286c2a9e3a21ee943b9004e2c149}{%
+           family={Fejrskov\bibnamedelimb M.\bibnamedelimi Pedersen},
+           familyi={F\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={J.\bibnamedelimi M.\bibnamedelimi Vasilomanolakis\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{cdef286c2a9e3a21ee943b9004e2c149}
+      \strng{fullhash}{cdef286c2a9e3a21ee943b9004e2c149}
+      \strng{bibnamehash}{cdef286c2a9e3a21ee943b9004e2c149}
+      \strng{authorbibnamehash}{cdef286c2a9e3a21ee943b9004e2c149}
+      \strng{authornamehash}{cdef286c2a9e3a21ee943b9004e2c149}
+      \strng{authorfullhash}{cdef286c2a9e3a21ee943b9004e2c149}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Springer eBooks}
+      \field{title}{Using NetFlow to measure the impact of deploying DNS-based blacklists}
+      \field{year}{2021}
+      \field{pages}{476\bibrangedash 496}
+      \range{pages}{21}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-030-90019-9_24
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-030-90019-9_24
+      \endverb
+    \endentry
+    \entry{ieee2020threat}{article}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Conference Publication}
+      \field{title}{Analyzing Malicious URLs using a Threat Intelligence System}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/9118051
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/9118051
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

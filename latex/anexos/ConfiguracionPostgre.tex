@@ -1,0 +1,105 @@
+\subsection{Anexo: Configuración de PostgreSQL en Windows}
+
+\subsection*{Instalación de PostgreSQL en Windows}
+Para instalar PostgreSQL en Windows, se deben seguir los siguientes pasos:
+
+\begin{enumerate}
+    \item \textbf{Descarga del Instalador de PostgreSQL}:
+    \begin{itemize}
+        \item Visitar la página oficial de PostgreSQL: \href{https://www.postgresql.org/download/windows/}{https://www.postgresql.org/download/windows/}
+        \item Descargar el instalador de la versión más reciente proporcionada por EnterpriseDB.
+    \end{itemize}
+    \item \textbf{Ejecución del Instalador}:
+    \begin{itemize}
+        \item Ejecutar el archivo de instalación descargado.
+        \item Seguir las instrucciones del asistente de instalación:
+        \begin{itemize}
+            \item \textbf{Seleccionar directorio de instalación}: Elegir la ubicación donde se desea instalar PostgreSQL.
+            \item \textbf{Seleccionar componentes}: Dejar los componentes por defecto seleccionados (PostgreSQL Server, pgAdmin 4, Stack Builder, etc.).
+            \item \textbf{Configurar el superusuario}: Definir una contraseña para el usuario \texttt{postgres} (es importante recordar esta contraseña, ya que será necesaria para administrar PostgreSQL).
+            \item \textbf{Seleccionar puerto}: El puerto por defecto es 5432. No es necesario cambiarlo a menos que sea estrictamente necesario.
+            \item \textbf{Configuración regional}: Seleccionar la configuración regional adecuada.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Finalización de la Instalación}:
+    \begin{itemize}
+        \item Una vez completada la instalación, el asistente ofrecerá la opción de ejecutar Stack Builder. Esta opción puede desmarcarse por ahora y finalizar la instalación.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Configuración de PostgreSQL}
+
+\subsubsection*{Acceso a la Interfaz de Línea de Comandos}
+\begin{itemize}
+    \item Abrir el menú de inicio y buscar \textit{SQL Shell (psql)}.
+    \item Ejecutarlo y proporcionar la siguiente información cuando se solicite:
+    \begin{itemize}
+        \item \textbf{Server}:  [localhost]
+        \item \textbf{Database}:  [postgres]
+        \item \textbf{Port}:  [5432]
+        \item \textbf{Username}: [postgres]
+        \item \textbf{Password}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Creación de una Base de Datos y un Usuario}
+Una vez en el shell de PostgreSQL, se puede crear una nueva base de datos y un nuevo usuario con los siguientes comandos SQL:
+
+\begin{lstlisting}[language=SQL, caption=Comandos SQL para crear una base de datos y un usuario]
+CREATE DATABASE url;
+CREATE USER yourusername WITH ENCRYPTED PASSWORD 'yourpassword';
+GRANT ALL PRIVILEGES ON DATABASE url_classification TO yourusername;
+\end{lstlisting}
+
+\subsection*{Conexión a PostgreSQL desde Python}
+
+\subsubsection*{Instalación de \texttt{psycopg2}}
+Abrir una terminal de comandos (CMD) o PowerShell y ejecutar el siguiente comando para instalar el paquete \texttt{psycopg2}:
+
+\begin{lstlisting}[language=bash, caption=Instalación de psycopg2]
+pip install psycopg2-binary
+\end{lstlisting}
+
+\subsubsection*{Conexión a la Base de Datos desde un Script de Python}
+El siguiente script de Python muestra cómo conectarse a la base de datos PostgreSQL y crear una tabla:
+
+\begin{lstlisting}[language=Python, caption=Script de conexión a PostgreSQL y creación de tabla, breaklines=true]
+import psycopg2
+
+try:
+    conn = psycopg2.connect(
+        dbname="url",
+        user="postgre",
+        password="1234",
+        host="localhost",
+        port="5432"
+    )
+    cur = conn.cursor()
+    print("Conexión exitosa a la base de datos")
+
+    # Ejemplo de creacion de una tabla
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS TablaUrl (
+        id SERIAL PRIMARY KEY,
+        url TEXT NOT NULL,
+        label BOOLEAN NOT NULL,
+        domain VARCHAR(255),
+        path TEXT,
+        query TEXT,
+        length INT,
+        num_dots INT,
+        num_hyphens INT,
+        has_https BOOLEAN,
+        has_ip BOOLEAN
+    )
+    """)
+    conn.commit()
+
+    # Cerrar la conexi\ón
+    cur.close()
+    conn.close()
+    print("Tabla creada y conexion cerrada")
+
+except Exception as e:
+    print(f"Error conectando a la base de datos: {e}")
+\end{lstlisting}

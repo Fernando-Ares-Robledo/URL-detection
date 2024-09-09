@@ -1,0 +1,25 @@
+\subsection{Conclusiones}
+
+
+\subsection*{Logros del Objetivo General}
+El objetivo principal de este trabajo era desarrollar un sistema avanzado basado en \textit{machine learning} para la detección y clasificación de \gls{url} maliciosas, implementarlo en un entorno de tiempo real y desarrollar un \gls{dashboard} interactivo que permitiera analizar y visualizar las características y patrones comunes de las \gls{url} almacenadas en una base de datos. Este objetivo se ha cumplido satisfactoriamente, logrando un sistema eficiente y eficaz que cumple con las expectativas planteadas.
+
+\subsection{Logros de los Objetivos Específicos}
+\begin{itemize}
+    \item \textbf{Desarrollar un extractor de características robusto y detallado:} Se ha implementado un extractor de características que incluye aspectos léxicos, información \gls{whois}, datos geográficos de los servidores y la presencia de patrones sospechosos en las \gls{url}. Este extractor ha demostrado ser eficiente en la recolección y análisis de datos relevantes.
+    
+    \item \textbf{Entrenar y evaluar un modelo de \textit{machine learning} para la detección y clasificación de \gls{url} maliciosas y benignas:} Se han entrenado y evaluado varios modelos de \textit{machine learning}, siendo el modelo de \textit{stacking} y \textit{xgboost} los más destacados. Las métricas de evaluación utilizadas fueron la precisión, el porcentaje de falsos positivos (FP) y el porcentaje de falsos negativos (FN), obteniendo resultados sobresalientes con una precisión superior al 99 por ciento.
+    
+    \item \textbf{Implementar el modelo entrenado en un \gls{plugin} básico para navegadores:} Se ha desarrollado un \gls{plugin} para navegadores que alerta a los usuarios cuando visitan una \gls{url} maliciosa. El \gls{plugin} ha sido probado con \glspl{url} benignas y maliciosas, demostrando su efectividad en la detección de amenazas.
+    
+    \item \textbf{Desarrollar un \gls{dashboard} web:} Se ha implementado un \gls{dashboard} interactivo que permite a los usuarios introducir una \gls{url} para su análisis y visualizar estadísticas y características de las \glspl{url} almacenadas en la base de datos. El \gls{dashboard} incluye gráficos y mapas interactivos que facilitan el análisis de los datos.
+\end{itemize}
+
+\subsection*{Evaluación del Modelo de Machine Learning}
+Las métricas de evaluación utilizadas fueron la precisión, el porcentaje de falsos positivos (FP) y el porcentaje de falsos negativos (FN). Estas métricas fueron seleccionadas debido a su importancia en la evaluación de modelos de clasificación, especialmente en el contexto de detección de phishing y \glspl{url} maliciosas, donde es crucial minimizar tanto los falsos positivos como los falsos negativos. Los resultados obtenidos muestran que el modelo de \textit{stacking} alcanzó una precisión del 99.28, con un FP de 0.4 y un FN de 0.31 por ciento.
+
+\subsection*{Funcionamiento del Plugin y Dashboard}
+El \gls{plugin} y el \gls{dashboard} desarrollados han demostrado ser herramientas efectivas para la detección y análisis de \glspl{url} maliciosas. El \gls{plugin} funciona correctamente, alertando a los usuarios sobre posibles amenazas. El \gls{dashboard} permite un análisis detallado y visualización de las características de las \glspl{url}, proporcionando a los usuarios información valiosa de manera rápida y accesible.
+
+\subsection*{Impacto y Contribuciones}
+El trabajo realizado ha contribuido significativamente al campo de la ciberseguridad, proporcionando una herramienta avanzada para la detección de \glspl{url} maliciosas. La implementación del \gls{plugin} y \gls{dashboard} no solo mejora la seguridad de los usuarios al navegar por la web, sino que también facilita el análisis de patrones y características comunes en \glspl{url} maliciosas, lo que puede ser útil para futuras investigaciones y desarrollos en este campo.

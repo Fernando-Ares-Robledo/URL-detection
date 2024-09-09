@@ -1,0 +1,25 @@
+\subsection{Técnicas de Detección de URLs Maliciosas}
+En esta subsección se describen las diferentes técnicas utilizadas para la detección de \glspl{url} maliciosas.
+
+\subsubsection*{Análisis basado en listas negras}
+El análisis basado en listas negras es uno de los métodos más comunes y efectivos para prevenir que los usuarios accedan a sitios web maliciosos. Este método implica el uso de una base de datos de \glspl{url} previamente identificadas como maliciosas. Cuando un usuario intenta acceder a una URL, esta se compara con la lista negra y, si hay una coincidencia, se bloquea el acceso.
+
+Sun et al. propusieron un enfoque automatizado para la generación de listas negras de \glspl{url} utilizando una búsqueda por similitud\autocite{sun2016automating}. Otro enfoque de alto rendimiento para la búsqueda de \glspl{url} en sistemas de filtrado fue descrito por IEEE, destacando la eficiencia y utilización de memoria\autocite{ieee2010lookup}. Además, el sistema PhishNet utiliza técnicas predictivas para identificar nuevas \glspl{url} de phishing basadas en combinaciones simples de \glspl{url} conocidas\autocite{ieee2010phishnet}.
+
+\subsubsection*{Análisis heurístico}
+El análisis heurístico se basa en la utilización de reglas heurísticas para identificar \glspl{url} maliciosas. Estas reglas se derivan del análisis de características comunes en \glspl{url} maliciosas, como la longitud de la \gls{url}, la presencia de ciertos caracteres y patrones en el dominio.
+
+Raja et al. propusieron un método para la detección de \glspl{url} maliciosas utilizando un enfoque basado en reglas heurísticas, destacando su efectividad en la generalización de \glspl{url} maliciosas\autocite{raja2022mudhr}. Por otro lado, Begum y Badugu realizaron un estudio comparativo de técnicas de detección de \glspl{url} maliciosas utilizando enfoques heurísticos y de aprendizaje automático\autocite{begum2019study}.
+
+\subsubsection*{Análisis de contenido}
+El análisis de contenido implica la inspección del contenido real de una página web para determinar si es maliciosa. Esto puede incluir el análisis de palabras clave, la inspección de scripts y el análisis del comportamiento de la página.
+
+Un estudio sobre la detección de contenido web malicioso utilizando técnicas de aprendizaje automático fue presentado por IEEE, donde se desarrolló una extensión para Chrome para actuar como intermediario entre los usuarios y los sitios web maliciosos\autocite{ieee2017malicious}. Además, Xu et al. propusieron un enfoque de detección de sitios web maliciosos que analiza simultáneamente el tráfico de red y el contenido de la página web\autocite{xu2013cross}.
+
+\subsubsection*{Métodos de machine learning}
+Los métodos de aprendizaje automático han ganado popularidad en la detección de \glspl{url} maliciosas debido a su capacidad para aprender y adaptarse a nuevas amenazas. Estos métodos implican el uso de algoritmos de clasificación para identificar \glspl{url} maliciosas basándose en características extraídas de las \glspl{url}.
+
+
+
+
+

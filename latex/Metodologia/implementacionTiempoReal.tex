@@ -1,0 +1,43 @@
+\subsection{Implementación en Tiempo Real}
+
+Para la implementación en tiempo real del sistema de detección de \glspl{url} maliciosas, se ha desarrollado un \gls{plugin} para navegadores web utilizando \textit{JavaScript} y \textit{HTML}. Este \gls{plugin} se comunica con un servidor \textit{Flask} implementado en \textit{Python}, el cual aloja el modelo de \textit{machine learning} entrenado.
+
+\subsubsection*{Arquitectura del Sistema}
+
+La arquitectura del sistema se compone de los siguientes elementos:
+
+\begin{itemize}
+    \item \textbf{Plugin del Navegador}: Implementado en \textit{JavaScript} y \textit{HTML}, este \gls{plugin} intercepta las solicitudes de navegación del usuario. Cada vez que se accede a una nueva \gls{url}, el \gls{plugin} envía una solicitud al servidor \textit{Flask} para evaluar la \gls{url}.
+
+    \item \textbf{Servidor \textit{Flask}}: Este servidor, implementado en \textit{Python}, recibe las solicitudes del \gls{plugin} del navegador y utiliza el mejor modelo de \textit{machine learning} para predecir si la \gls{url} es maligna o benigna. El servidor \textit{Flask} devuelve la predicción al \gls{plugin} del navegador en tiempo real.
+
+    \item \textbf{Modelo de \textit{Machine Learning}}: El modelo entrenado y optimizado se aloja en el servidor \textit{Flask}. Este modelo ha sido seleccionado a partir de un exhaustivo proceso de evaluación y optimización, garantizando la máxima precisión y confiabilidad en la detección de \glspl{url} maliciosas.
+\end{itemize}
+
+\subsubsection*{Proceso de Detección en Tiempo Real}
+
+El proceso de detección en tiempo real sigue los siguientes pasos:
+
+\begin{enumerate}
+    \item \textbf{Interceptación de la URL}: Cuando el usuario navega a una nueva \gls{url}, el \gls{plugin} del navegador intercepta la solicitud y captura la \gls{url} a ser visitada.
+
+    \item \textbf{Envío de la Solicitud}: El \gls{plugin} envía la \gls{url} interceptada al servidor \textit{Flask} mediante una solicitud \textit{HTTP POST}.
+
+    \item \textbf{Evaluación de la URL}: El servidor \textit{Flask} recibe la \gls{url} y utiliza el modelo de \textit{machine learning} para predecir si la \gls{url} es maligna o benigna.
+
+    \item \textbf{Respuesta del Servidor}: El servidor \textit{Flask} devuelve la predicción al \gls{plugin} del navegador, indicando si la \gls{url} es segura o no.
+
+    \item \textbf{Notificación al Usuario}: El \gls{plugin} del navegador muestra una notificación al usuario basada en la predicción del modelo. Si la \gls{url} es considerada maligna, el usuario recibe una advertencia y puede optar por no continuar a la página.
+\end{enumerate}
+
+\subsubsection*{Beneficios de la Implementación en Tiempo Real}
+
+La implementación en tiempo real proporciona varios beneficios:
+
+\begin{itemize}
+    \item \textbf{Seguridad Inmediata}: Los usuarios reciben advertencias inmediatas sobre \glspl{url} potencialmente maliciosas, protegiéndolos de \gls{phishing} y otras amenazas en línea.
+
+    \item \textbf{Experiencia de Usuario Mejorada}: Al integrar la detección directamente en el navegador, la experiencia del usuario es fluida y no intrusiva.
+
+    \item \textbf{Actualización Dinámica}: El servidor \textit{Flask} permite actualizar y mejorar el modelo de \textit{machine learning} sin necesidad de modificar el \gls{plugin} del navegador, asegurando que el sistema se mantenga actualizado frente a nuevas amenazas.
+\end{itemize}

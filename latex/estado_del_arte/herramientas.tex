@@ -1,0 +1,27 @@
+\subsection{Herramientas y Soluciones Existentes}
+En esta subsección se realiza un análisis de las herramientas y soluciones actualmente disponibles en el mercado para la detección de \glspl{url} maliciosas. Se destacan sus características principales y se discuten sus limitaciones.
+
+\subsubsection*{VirusTotal}
+VirusTotal es un servicio gratuito que analiza archivos y \glspl{url} sospechosas, facilitando la detección rápida de virus, gusanos, troyanos y otros tipos de contenido malicioso. VirusTotal utiliza múltiples motores antivirus y herramientas de detección de malware para proporcionar resultados completos y detallados\autocite{peng2019opening}.
+
+Una de las principales ventajas de VirusTotal es su capacidad para agregar resultados de múltiples motores de detección, lo que aumenta la probabilidad de identificar contenido malicioso. Sin embargo, también presenta limitaciones, como la posibilidad de falsos positivos y la falta de análisis en tiempo real para algunas amenazas emergentes\autocite{ieee2017automated}. Además, la variabilidad en los resultados entre diferentes motores de detección puede generar inconsistencias, lo que resalta la necesidad de metodologías más rigurosas para evaluar y utilizar los resultados obtenidos de VirusTotal\autocite{misquitta2024comparative}.
+
+\subsubsection*{OpenPhish}
+OpenPhish es un proveedor de servicios de inteligencia de amenazas que se especializa en la detección de \glspl{url} de phishing. Utiliza técnicas avanzadas de detección automatizada para identificar \glspl{url} maliciosas y proporciona una base de datos actualizada que puede integrarse con diversas soluciones de seguridad\cite{ieee2021comparative}.
+
+OpenPhish destaca por su enfoque en la automatización y la actualización constante de su base de datos de \glspl{url} de phishing. Sin embargo, su eficacia puede verse limitada por la rapidez con la que se identifican y añaden nuevas \glspl{url} a la base de datos, así como por su enfoque específico en el phishing, dejando de lado otras formas de contenido malicioso.
+
+\subsubsection*{DNS-Based Blackhole List (DNSBL)}
+Las listas negras basadas en DNS (DNSBL) son un método para identificar y bloquear \glspl{url} maliciosas a nivel de sistema de nombres de dominio (DNS). Estas listas negras se utilizan comúnmente para filtrar correo electrónico no deseado y bloquear el acceso a sitios web maliciosos\autocite{fejrskov2021using}.
+
+Las DNSBL son eficaces para bloquear una gran cantidad de \glspl{url} maliciosas conocidas. Sin embargo, presentan limitaciones, como la posibilidad de falsos positivos y la dependencia de actualizaciones constantes para mantener su efectividad contra nuevas amenazas. Además, el uso de DNSBL puede no ser suficiente para bloquear todo el tráfico malicioso, especialmente si los atacantes utilizan técnicas de evasión avanzadas.
+
+\subsubsection*{Automated Threat Intelligence and Detection}
+El uso de inteligencia artificial y aprendizaje automático en la detección automatizada de amenazas ha aumentado en los últimos años. Estas tecnologías pueden analizar grandes volúmenes de datos y detectar patrones de comportamiento malicioso, mejorando la capacidad de las organizaciones para identificar y responder a amenazas en tiempo real\autocite{ieee2020threat}.
+
+La principal ventaja de la detección automatizada de amenazas es su capacidad para adaptarse y aprender de nuevas amenazas. Sin embargo, su eficacia depende de la calidad de los datos de entrenamiento y de los algoritmos utilizados, así como de la capacidad de la organización para implementar y gestionar estas tecnologías de manera efectiva. Un enfoque de clustering no supervisado, como el k-means, puede proporcionar valiosos conocimientos sobre las \glspl{url} maliciosas y ayudar a los operadores de red a tomar decisiones de política para mitigar los ciberataques\autocite{ieee2020threat}.
+
+\subsubsection*{Comparativa de Herramientas de Detección de URLs Maliciosas}
+La comparativa de herramientas de detección de \glspl{url} maliciosas revela que cada solución tiene sus propias fortalezas y debilidades. VirusTotal y OpenPhish son eficaces para identificar una amplia gama de amenazas, mientras que las listas negras basadas en DNS proporcionan un filtrado eficaz a nivel de red. La detección automatizada de amenazas ofrece una solución adaptable y escalable para organizaciones con grandes volúmenes de datos.
+
+Sin embargo, todas estas herramientas comparten una limitación común: la necesidad de actualizaciones constantes y la posibilidad de falsos positivos y negativos. La integración de múltiples herramientas y enfoques puede mejorar la capacidad de detección general, pero también puede aumentar la complejidad y los costos de gestión.

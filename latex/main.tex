@@ -1,0 +1,538 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+%\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lipsum} % Este paquete es solo para generar texto de relleno.
+\usepackage[T1]{fontenc}
+\usepackage{amsmath} 
+\usepackage{color}
+\usepackage[table,rgb,xcdraw]{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{pgfgantt}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage[style=numeric, backend=biber, sorting=none]{biblatex}
+%\usepackage[style=numeric, backend=biber, sorting=none]{biblatex}
+\usepackage{smartdiagram}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+
+%posible fuente de error estos dos 
+\usepackage{makecell}      % Para \makecell
+\usepackage{array} 
+
+\usepackage{colortbl}
+\usepackage{siunitx} % For aligning numbers by decimal point if needed
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.8}
+
+\usepackage{float}
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
+% xcolor manual: 34
+\definecolorseries{colours}{hsb}{grad}[hsb]{.575,1,1}{.987,-.234,0}
+\resetcolorseries[12]{colours}
+%\usepackage{colortbl}
+%\renewcommand*\familydefault{\sfdefault}
+%\renewcommand*\familydefault{\put}
+\usepackage[acronym, toc]{glossaries}
+%\usepackage{glossaries-extra}
+
+\usetikzlibrary{shapes, arrows, positioning}
+
+\input{config}
+
+
+\input{otros/glosario}
+\makenoidxglossaries
+%\makeglossaries
+
+
+
+
+
+
+
+
+
+
+\usepackage[
+    type={CC},
+    modifier={by-sa},
+    version={3.0},
+]{doclicense}
+
+
+
+
+\newcommand{\topline}{ %
+        \arrayrulecolor{VIUnaran}\specialrule{0.1em}{\abovetopsep}{0pt}%
+        \arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+        \arrayrulecolor{rulecolor}}
+% Command \midline consists of 3 rules (top colour tableheadcolor, middle colour black, bottom colour white)
+\newcommand{\midtopline}{ %
+        \arrayrulecolor{tableheadcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+        \arrayrulecolor{rulecolor}\specialrule{\lightrulewidth}{0pt}{0pt}%
+        \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+        \arrayrulecolor{rulecolor}}
+% Command \bottomline consists of 2 rules (top colour
+\newcommand{\bottomline}{ %
+        \arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+        \arrayrulecolor{rulecolor} %
+        \specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+
+
+\newcommand{\midheader}[2]{%
+        \midrule\topmidheader{#1}{#2}}
+\newcommand\topmidheader[2]{\multicolumn{#1}{c}{\textsc{#2}}\\%
+                \addlinespace[0.5ex]}
+
+\pgfplotstableset{normal/.style ={%
+        header=true,
+        string type,
+        column type=l,
+        every odd row/.style={
+            before row=
+        },
+        every head row/.style={
+            before row={\topline\rowcolor{tableheadcolor}},
+            after row={\midtopline}
+        },
+        every last row/.style={
+            after row=\bottomline
+        },
+        col sep=&,
+        row sep=\\
+    }
+}
+
+
+\tcbset{
+    phasebox/.style={
+        colback=phasecolor,
+        colframe=white,
+        fonttitle=\bfseries,
+        colbacktitle=phasecolor,
+        coltitle=black,
+        enhanced,
+        attach boxed title to top left={yshift=-2mm, xshift=2mm},
+        boxed title style={boxrule=0pt, colframe=white},
+        before skip=10pt, % Espacio antes de la caja
+        after skip=10pt, % Espacio después de la caja
+        left=4mm, % Espacio interno izquierdo
+        right=4mm, % Espacio interno derecho
+        top=2mm, % Espacio interno superior
+        bottom=2mm, % Espacio interno inferior
+        breakable
+    },
+    sprintbox/.style={
+        colback=sprintcolor,
+        colframe=white,
+        fonttitle=\bfseries,
+        colbacktitle=sprintcolor,
+        coltitle=black,
+        enhanced,
+        attach boxed title to top left={yshift=-2mm, xshift=2mm},
+        boxed title style={boxrule=0pt, colframe=white},
+        before skip=6pt, % Espacio antes de la caja
+        after skip=6pt, % Espacio después de la caja
+        left=4mm, % Espacio interno izquierdo
+        right=4mm, % Espacio interno derecho
+        top=2mm, % Espacio interno superior
+        bottom=2mm, % Espacio interno inferior
+        breakable
+    }}
+% Configuración de la geometría de la página
+%\usepackage[headheight=2.5cm, top=2cm, bottom=1cm, left=2.5cm, right=2.5cm]{geometry}
+
+% Configuración del encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{} % Limpia el encabezado y pie de página por defecto
+\renewcommand{\headrulewidth}{0pt} % Sin línea en el encabezado
+\renewcommand{\footrulewidth}{1pt} % Ancho de la línea del pie de página
+\renewcommand{\footrule}{\hbox to\headwidth{\color{VIUnaranja}\leaders\hrule height \footrulewidth\hfill}} % Línea del pie de página
+\setlength{\headsep}{30pt}
+\fancyhead[L]{\includegraphics[width=0.2\textwidth]{./imagenes/logoVIU.png}} % Cambia 'tu_imagen.png' por la ruta de tu imagen.
+\fancyfoot[L]{Fernando Ares Robledo} % Tu nombre en el pie de página izquierdo
+\fancyfoot[C]{\thepage} % Número de página en el centro del pie de página
+\fancyfoot[R]{\nouppercase{\leftmark}} % Nombre de la sección en el pie de página derecho
+
+
+\addto\captionsspanish{
+  \renewcommand{\listtablename}{Índice de tablas}
+}
+
+% Configuración de los marcadores para que capturen la sección actual
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+
+% Estilos para los títulos de secciones
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Configuración para la primera página de los capítulos o secciones
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[C]{\includegraphics[width=\textwidth]{encabezado.png}} % Encabezado para la primera página
+  \fancyfoot[L]{Fernando Ares Robledo} % Tu nombre en el pie de página izquierdo
+  \fancyfoot[C]{\thepage} % Número de página en el centro del pie de página
+  \fancyfoot[R]{\nouppercase{\leftmark}} % Nombre de la sección en el pie de página derecho
+  \renewcommand{\headrulewidth}{0pt} % Línea del encabezado fuera
+  \renewcommand{\footrulewidth}{1pt} % Línea del pie de página
+  \renewcommand{\footrule}{\hbox to\headwidth{\color{VIUnaranja}\leaders\hrule height \footrulewidth\hfill}}
+}
+
+
+
+
+
+
+
+
+\addbibresource{references.bib}
+
+
+
+%░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+%░░░█▀▀▀░█▀▀▀░░█▀▀░▀▀█░░█░░░░
+%░░░█░▀█░█░▀█░░█▀▀░▄▀░░░▀░░░░
+%░░░▀▀▀▀░▀▀▀▀░░▀▀▀░▀▀▀░░▀░░░░
+%░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+%      $( ͡⚆ ͜ʖ ͡⚆)╭∩╮
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% aqui epiezo a escribir
+\begin{document}
+
+
+
+%========================================================================%$$
+%                                                                        %$$
+%                                Portada                                 %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+\begin{titlepage}                                                        %$$
+    \centering                                                           %$$
+    \includegraphics[width=0.5\textwidth]                                %$$
+    {{./imagenes/logoVIU.png}}\par\vspace{1cm}                %$$
+    {\scshape\LARGE Máster Universitario en Big Data y Ciencia de Datos \par}                %$$
+    \vspace{1cm}                                                         %$$
+    %{\scshape\Large Master en Ciberseguridad\par}                        %$$
+    \vspace{1.5cm}                                                       %$$
+    {\huge\bfseries Anomaly Detection in Cybersecurity Data\par}                                                        %$$
+    \vspace{4cm}                                                         %$$
+    {\Large\itshape Fernando Ares Robledo\par}                           %$$
+    \vfill                                                               %$$
+                                 %$$
+                                                                         %$$
+                                                                   %$$
+                                                  %$$
+                                                                         %$$
+    \vfill                                                               %$$
+                                                                         %$$
+    % Bottom of the page                                                 %$$
+    {\large \today\par}                                                  %$$
+\end{titlepage}                                                          %$$
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                              FIN de Portada                            %$$
+%                                                                        %$$
+%========================================================================%$$
+
+\newpage
+\pagenumbering{roman} % Esto cambia la numeración a números romanos
+
+%========================================================================%$$
+%                                                                        %$$
+%                  Página de Licencia de Distribución                    %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+%\thispagestyle{plain} % Para que no tenga encabezado ni pie de página    %$$
+\vspace*{\fill} % Centra verticalmente el contenido de la licencia       %$$
+                                                                         %$$
+\doclicenseThis                                                          %$$
+                                                                         %$$
+\bigskip                                                                 %$$
+                                                                         %$$
+\begin{itemize}                                                          %$$
+    \item {\textbf{Atribución:} {Debes dar crédito de manera adecuada,   %$$
+    proporcionar un enlace a la licencia, e indicar si se han            %$$
+    realizado cambios. Puedes hacerlo de cualquier manera razonable,     %$$
+    pero no de manera que sugiera que el licenciante te apoya a ti       %$$
+    o al uso que haces de la obra.}}                                     %$$
+    \item {\textbf{CompartirIgual:} {Si remezclas, transformas o         %$$
+    creas a partir del material, debes distribuir tus contribuciones     %$$
+    bajo la misma licencia que el original.}}                            %$$    
+\end{itemize}                                                            %$$
+                                                                         %$$
+Para más detalles sobre los términos de la licencia, por favor visita    %$$
+                                                                         %$$
+\url{https://creativecommons.org/licenses/by-sa/3.0/es/}.                %$$
+    % Aquí incluyes el texto completo de tu licencia                     %$$
+    % Puedes usar el comando \par para separar párrafos                  %$$
+    \vspace{1cm} % Espacio después del texto de la licencia              %$$
+                                                                         %$$
+\vspace*{\fill} % Continúa centrando el contenido verticalmente          %$$
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                  FIN de Página de Licencia de Distribución             %$$
+%                                                                        %$$
+%========================================================================%$$
+
+
+
+\newpage
+
+\bigskip
+
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|
+>{\columncolor{headercolor}}l |
+>{\raggedright\arraybackslash}p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{headercolor}\textbf{FICHA DEL TRABAJO FINAL}} \\ \hline
+\textbf{Título del trabajo:} &Anomaly Detection in Cybersecurity Data\\ \hline
+\textbf{Nombre del autor:} & Fernando Ares Robledo \\ \hline
+\textbf{Nombre del consultor/a:} & Cristina Caro Gonzalez  \\ \hline
+\textbf{Fecha de entrega (dd/mm/aaaa):} & 29/07/2024 \\ \hline
+\textbf{Titulación o programa:} & Máster U. en Big Data y Ciencia de Datos. \\ \hline
+\textbf{Área del Trabajo Final:} & Ciencia de datos y aplicaciones de Seguridad. \\ \hline
+\textbf{Idioma del trabajo:} & Castellano. \\ \hline
+\textbf{Palabras clave:} & URLs, machine learning, phising \\ \hline
+
+
+\end{tabular}
+\end{table}
+\newpage
+\textbf{Resumen del Trabajo} 
+
+En este estudio se presenta el desarrollo de un sistema avanzado basado en machine learning para la detección y clasificación de URLs maliciosas. El sistema se compone de un extractor de características detallado, un modelo de machine learning entrenado y evaluado, un plugin para navegadores que alerta a los usuarios sobre URLs maliciosas, y un dashboard interactivo para analizar y visualizar características y patrones de URLs. Las características extraídas incluyen aspectos léxicos, información WHOIS y datos geográficos, entre otros. El modelo de machine learning, basado en técnicas como Stacking y Boosting, mostró un rendimiento sobresaliente. Se discuten las limitaciones del sistema, como la rápida evolución de las URLs maliciosas y la dificultad de análisis de contenido interno de las páginas web. Finalmente, se proponen trabajos futuros para mejorar el sistema, incluyendo la incorporación de análisis de contenido interno y colaboraciones con otras entidades.
+
+\medskip
+
+\textbf{Abstract}
+
+This study presents the development of an advanced machine learning-based system for the detection and classification of malicious URLs. The system comprises a detailed feature extractor, a trained and evaluated machine learning model, a browser plugin that alerts users to malicious URLs, and an interactive dashboard for analyzing and visualizing URL characteristics and patterns. The extracted features include lexical aspects, WHOIS information, and geographic data, among others. The machine learning model, based on techniques such as Stacking and Boosting, showed outstanding performance. The system's limitations, such as the rapid evolution of malicious URLs and the difficulty in analyzing internal content of web pages, are discussed. Finally, future work is proposed to enhance the system, including the incorporation of internal content analysis and collaborations with other entities.
+
+
+
+\newpage
+% Restablece el estilo de página para el resto del documento
+\pagestyle{fancy}
+
+
+
+%========================================================================%$$
+%                                                                        %$$
+%                           Índices                                      %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+\tableofcontents                                                         %$$
+\newpage                                                                 %$$
+                                                                         %$$
+\listoffigures                                                           %$$
+\newpage                                                                 %$$
+                                                                         %$$
+\listoftables                                                            %$$
+\newpage                                                                 %$$
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                       FIN Indices                                      %$$
+%                                                                        %$$
+%========================================================================%$$
+
+
+
+% Cambio de numeración a números arábigos y comienzo del contenido principal
+\pagenumbering{arabic} % Esto cambia la numeración a números arábigos
+
+
+% Resto del documento
+
+
+%========================================================================%$$
+%                                                                        %$$
+%                                INTRODUCCIÓN                            %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+\section{Introducción}                                                   %$$
+                                                                         %$$
+\subsection{Contexto y Justificación del trabajo}                        %$$
+\input{introduccion/contexto}                                            %$$
+                                                                         %$$
+\subsection{Objetivos del Trabajo}                                       %$$
+\input{introduccion/objetivos}                                           %$$
+                                                                         %$$
+\subsection{Impacto en sostenibilidad, ético-social y de diversidad}     %$$
+\input{introduccion/InpactoSostenibilidad}                               %$$ 
+                                                                         %$$
+\subsection{Enfoque y método seguido}                                    %$$
+\input{introduccion/EnfoqueYmetodo}                                      %$$
+                                                                         %$$
+\subsection{Planificación del Trabajo}                                   %$$
+\input{introduccion/planicacion}                                         %$$
+                                                                         %$$
+\subsection{Análisis de riesgo del proyecto}                             %$$
+\input{introduccion/analisisRiesgo}                                      %$$
+                                                                         %$$
+\subsection{Descripción de los capítulos}                                %$$
+\input{introduccion/descripcionCapitulos}                                %$$
+                                                                         %$$   
+\subsection{Herramientas usadas}                                         %$$
+\input{introduccion/Herramientas}                                        %$$
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                         FIN de INTRODUCCIÓN                            %$$
+%                                                                        %$$
+%========================================================================%$$
+
+
+
+\newpage
+
+%========================================================================%$$
+%                                                                        %$$
+%                            Estado del arte                             %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+\section{Estado del arte}                                                %$$
+\input{estado_del_arte/visionGeneral}
+\input{estado_del_arte/url}                                                      
+\input{estado_del_arte/tecnicas}
+\input{estado_del_arte/herramientas}
+\input{estado_del_arte/limitaciones}                                     %$$
+                                                                         %$$
+                              %$$
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                      FIN de Estado del arte                            %$$
+%                                                                        %$$
+%========================================================================%$$
+
+\newpage
+
+%========================================================================%$$
+%                                                                        %$$
+%                                Bacula                                  %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+\section{Metodología}                                                         %$$
+\input{Metodologia/Enfoque}
+\input{Metodologia/recopilacion}
+\input{Metodologia/extraccion}
+\input{Metodologia/desarrollo del modelo}
+\input{Metodologia/implementacionTiempoReal}
+\input{Metodologia/dashboard}
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                          FIN de Bacula                                 %$$
+%                                                                        %$$
+%========================================================================%$$
+
+
+
+
+
+
+
+\newpage
+
+
+\section{Resultados y Discusión}
+\input{Resultados y Discusión/ResultadosExtracciónCaracterísticas}
+\input{Resultados y Discusión/DesempeñoModelos}
+\input{Resultados y Discusión/ResultadosImplementacionTreal}
+\input{Resultados y Discusión/ResultadosDashboard}
+
+\newpage
+\section{Conclusiones y trabajos futuros}
+\input{conclusiones/limitaciones}
+\input{conclusiones/conclusiones}
+\input{conclusiones/futuro}
+\newpage
+\section{Glosario}
+%\printglossaries
+\printnoidxglossaries
+\newpage
+%========================================================================%$$
+%                                                                        %$$
+%                          Bibliografia                                  %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+\section{Bibliografía}                                                   %$$
+\printbibliography                                                       %$$
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                          Fin Bibliografia                              %$$
+%                                                                        %$$
+%========================================================================%
+
+\newpage
+
+%========================================================================%$$
+%                                                                        %$$
+%                                Anexos                                  %$$
+%                                                                        %$$
+%========================================================================%$$
+                                                                         %$$
+\section{Anexos}                                                         %$$ 
+\setcounter{page}{1}                                                     %$$
+\renewcommand{\thepage}{Anexo1 -\arabic{page}}                           %$$
+%\input{anexos/ConfiguracionPostgre}
+\newpage                                                                 %$$
+%\input{anexos/cargaUrls}                                                 %$$
+\newpage 
+%\input{anexos/tablaDominios}%$$
+%\input{anexos/tablaQueries}
+.
+\renewcommand{\thepage}{Anexo 2 -\arabic{page}}
+                                                                         %$$
+%************************************************************************%$$
+%                                                                        %$$
+%                               Anexos                                   %$$
+%                                                                        %$$
+%========================================================================%$$
+
+
+
+
+
+%\lipsum[1-3]
+% ... el resto de tu documento ...
+
+\end{document}

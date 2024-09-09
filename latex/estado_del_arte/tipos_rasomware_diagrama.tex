@@ -1,0 +1,51 @@
+\usetikzlibrary{positioning, arrows.meta, shapes, backgrounds}
+
+
+\begin{tikzpicture}[
+    nodo/.style={
+        rectangle,
+        rounded corners,
+        draw=cyan!60,
+        align=center,
+        fill=white, % color de fondo predeterminado
+        font=\small,
+        inner sep=2pt,
+        minimum width=2cm,
+        minimum height=0.7cm,
+    },
+    nodo_coloreado/.style={nodo, fill=cyan!10}, % nuevo estilo para nodos coloreados
+    arr/.style={-Latex, thick,, draw=teal!50}
+]
+
+% Nodos
+\node[nodo_coloreado] (ransomware) {Ransomware}; % nodo coloreado
+\node[nodo, below=of ransomware] (crypto) {Crypto};
+\node[nodo, below=of crypto] (locker) {Locker};
+\node[nodo, below=of locker] (scareware) {Scareware};
+\node[nodo, right=of crypto] (emailscrypto) {Difundido vía emails, enlaces, etc.};
+\node[nodo, right=of locker] (emailslocker) {Difundido vía emails, enlaces, etc.};
+\node[nodo, right=of scareware] (popupsscare) {Engaña al usuario con pop-ups, emails, etc.};
+\node[nodo, right=of emailscrypto] (encryptdata) {Encripta datos sensibles};
+\node[nodo, right=of emailslocker] (lockout) {Bloquea al usuario encrip-\\tando archivos del sistema};
+\node[nodo_coloreado, right=of popupsscare] (blackmail) {Chantaje}; % nodo coloreado
+
+% Conexiones principales
+\draw[arr] (ransomware) edge[arr, out=210, in=180]   (crypto.west);
+\draw[arr] (ransomware) edge[arr, out=210, in=180] (locker.west);
+\draw[arr] (ransomware) edge[arr, out=210, in=180] (scareware.west);
+
+\draw[arr] (crypto) -- (emailscrypto);
+\draw[arr] (locker) -- (emailslocker);
+\draw[arr] (scareware) -- (popupsscare);
+
+% Conexiones a nodos de acción
+\draw[arr] (emailscrypto) -- (encryptdata);
+\draw[arr] (emailslocker) -- (lockout);
+\draw[arr] (popupsscare) -- (blackmail);
+
+% Ajustes a las conexiones para evitar cruce usando el método 'edge'
+\path (encryptdata.east) edge[arr, out=0, in=0] (blackmail.east);
+\path (lockout) edge[arr] (blackmail);
+
+\end{tikzpicture}
+

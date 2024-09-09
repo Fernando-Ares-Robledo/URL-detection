@@ -1,0 +1,169 @@
+
+
+\section*{Anexo: Procesamiento de URLs Maliciosas}
+
+\subsection*{Descarga y Procesamiento de URLs Maliciosas}
+
+Este script en Python descarga el archivo CSV de URLhaus, verifica si las URLs ya existen en la base de datos, y agrega las nuevas entradas.
+
+\begin{lstlisting}[language=Python, caption=Script para procesar URLs maliciosas]
+import requests
+import pandas as pd
+import psycopg2
+from psycopg2 import sql
+import io
+
+# Configuración de la conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="url",
+    user="postgres",
+    password="1234",
+    host="localhost",
+    port="5432"
+)
+cur = conn.cursor()
+
+# Descargar el archivo CSV
+csv_url = 'https://urlhaus.abuse.ch/downloads/csv_recent/'
+response = requests.get(csv_url)
+csv_data = response.content.decode('utf-8')
+
+# Procesar el contenido para obtener la cabecera correcta
+csv_lines = csv_data.splitlines()
+header_index = next(i for i, line in enumerate(csv_lines) if line.startswith('# id'))
+header = csv_lines[header_index].lstrip('# ').split(',')
+csv_data = '\n'.join(csv_lines[header_index+1:])
+
+# Leer el CSV en un DataFrame
+df = pd.read_csv(io.StringIO(csv_data), names=header)
+
+# Mostrar las primeras filas del DataFrame para verificar
+print("Columnas del DataFrame:", df.columns)
+print("Primeras filas del DataFrame:\n", df.head())
+
+# Asegurarse de que las columnas estén en minúsculas
+df.columns = [col.lower() for col in df.columns]
+
+# Crear la tabla si no existe
+cur.execute("""
+CREATE TABLE IF NOT EXISTS TablaURL (
+    url TEXT PRIMARY KEY,
+    maligna BOOLEAN NOT NULL,
+    tipo TEXT NOT NULL
+)
+""")
+conn.commit()
+
+# Procesar y agregar las URLs a la base de datos
+for _, row in df.iterrows():
+    url = row['url']
+    threat = row['threat'] if pd.notnull(row['threat']) else '1'
+
+    # Comprobar si la URL ya está en la base de datos
+    cur.execute("SELECT EXISTS(SELECT 1 FROM TablaURL WHERE url=%s)", (url,))
+    exists = cur.fetchone()[0]
+
+    if not exists:
+        # Insertar la URL en la base de datos
+        cur.execute(
+            sql.SQL("INSERT INTO TablaURL (url, maligna, tipo) VALUES (%s, %s, %s)"),
+            (url, True, threat)
+        )
+
+conn.commit()
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+
+print("Proceso completado.")
+\end{lstlisting}
+
+\subsection*{Explicación del Código}
+
+\begin{itemize}
+    \item \textbf{Configuración de la Conexión}: Se configura la conexión a la base de datos PostgreSQL con las credenciales y parámetros correspondientes.
+    \item \textbf{Descarga del Archivo CSV}: Se utiliza \texttt{requests} para descargar el archivo CSV desde la URL proporcionada.
+    \item \textbf{Procesamiento del CSV}: Se procesa el contenido del CSV para obtener la cabecera correcta, omitiendo los comentarios.
+    \item \textbf{Lectura del CSV}: Se lee el contenido del CSV en un DataFrame de \texttt{pandas}.
+    \item \textbf{Verificación de Datos}: Se imprimen las columnas y las primeras filas del DataFrame para verificar que los datos se han cargado correctamente.
+    \item \textbf{Creación de la Tabla}: Si la tabla \texttt{TablaURL} no existe, se crea con las columnas \texttt{url}, \texttt{maligna} y \texttt{tipo}.
+    \item \textbf{Procesamiento de Datos}: Se itera sobre las filas del DataFrame, verificando si cada URL ya está en la base de datos. Si la URL no está en la base de datos, se inserta con los valores correspondientes (\texttt{maligna=True} y \texttt{tipo} según el \texttt{threat} del CSV).
+    \item \textbf{Cierre de la Conexión}: Se cierra la conexión a la base de datos.
+\end{itemize}
+
+
+
+\subsection*{Procesamiento y Almacenamiento de URLs desde Archivos JSON}
+
+Este script en Python procesa archivos JSON grandes con URLs benignas y de phishing, y almacena las URLs en una base de datos PostgreSQL.
+
+\begin{lstlisting}[language=Python, caption=Script para procesar archivos JSON grandes y poblar la base de datos]
+import pandas as pd
+import psycopg2
+from psycopg2 import sql
+import requests
+import io
+
+# Configuración de la conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="url",
+    user="postgres",
+    password="1234",
+    host="localhost",
+    port="5432"
+)
+cur = conn.cursor()
+
+# URLs de los archivos JSON
+benign_url = 'https://zenodo.org/records/8364668/files/benign_2307.json'
+phishing_url = 'https://zenodo.org/records/8364668/files/phishing_2307.json'
+
+# Función para leer y procesar JSON en streaming
+def read_and_process_json(url, maligna_value):
+    response = requests.get(url, stream=True)
+    response.raise_for_status()
+
+    for chunk in response.iter_content(chunk_size=1024*1024):
+        if chunk:
+            data = io.StringIO(chunk.decode('utf-8'))
+            df = pd.read_json(data, lines=True)
+            for index, row in df.iterrows():
+                domain_name = row['domain_name']
+                maligna = maligna_value
+                tipo = 'benign' if maligna_value == 0 else 'malicious'
+                
+                # Comprobar si la URL ya está en la base de datos
+                cur.execute("SELECT EXISTS(SELECT 1 FROM TablaURL WHERE url=%s)", (domain_name,))
+                exists = cur.fetchone()[0]
+
+                if not exists:
+                    # Insertar la URL en la base de datos
+                    cur.execute(
+                        sql.SQL("INSERT INTO TablaURL (url, maligna, tipo) VALUES (%s, %s, %s)"),
+                        (domain_name, maligna, tipo)
+                    )
+
+    conn.commit()
+
+# Leer y procesar los archivos JSON
+read_and_process_json(benign_url, 0)
+read_and_process_json(phishing_url, 1)
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+
+print("Proceso completado.")
+\end{lstlisting}
+
+\section*{Explicación del Código}
+
+\begin{itemize}
+    \item \textbf{Configuración de la Conexión}: Se configura la conexión a la base de datos PostgreSQL con las credenciales y parámetros correspondientes.
+    \item \textbf{URLs de los Archivos JSON}: Se definen las URLs de los archivos JSON de benignos y phishing.
+    \item \textbf{Función para Leer y Procesar JSON en Streaming}: La función \texttt{read\_and\_process\_json} descarga y procesa los archivos JSON en streaming para manejar archivos grandes sin cargar todo el contenido en memoria.
+    \item \textbf{Procesamiento de Datos}: Cada dominio se verifica en la base de datos para evitar duplicados. Los dominios se insertan en la tabla \texttt{TablaURL} con sus etiquetas correspondientes (\texttt{maligna} y \texttt{tipo}).
+    \item \textbf{Lectura y Procesamiento de Archivos JSON}: Se procesan y agregan los datos de benignos y phishing a la base de datos.
+    \item \textbf{Cierre de la Conexión}: Se cierra la conexión a la base de datos.
+\end{itemize}

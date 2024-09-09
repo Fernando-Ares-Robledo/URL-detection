@@ -1,0 +1,18 @@
+\subsection{Concepto la Velocidad de Restore}
+
+La velocidad de restore se refiere al tiempo que se tarda en recuperar datos desde un medio de backup hasta que están completamente disponibles para su uso después de un evento disruptivo o durante operaciones de mantenimiento rutinarias. Esta métrica es crucial para la continuidad del negocio y la gestión de desastres, ya que determina la capacidad de una organización para volver a la normalidad operativa tras una interrupción.
+
+\subsubsection{Importancia de la Velocidad de Restore}
+
+La velocidad con la que los datos pueden ser restaurados afecta directamente el Tiempo de Inactividad Tolerable (TIT) y los Objetivos de Tiempo de Recuperación (RTO) de una empresa. Un RTO bajo es esencial para aplicaciones críticas donde incluso una pequeña cantidad de tiempo de inactividad puede resultar en pérdidas significativas o en riesgos de seguridad. En contextos de desastre, una restauración rápida es vital para minimizar el impacto financiero y operativo, asegurando que los servicios esenciales puedan ser reanudados rápidamente.
+
+\subsubsection{Diferencias entre Velocidad de Backup y Velocidad de Restore}
+
+Aunque tanto la velocidad de backup como la de restore son fundamentales para la gestión de la protección de datos, sus prioridades operacionales y técnicas difieren significativamente:
+
+\begin{itemize}
+    \item \textbf{Prioridades Operacionales}: Mientras que la velocidad de backup se centra en capturar y asegurar los datos de manera eficiente con el mínimo impacto en la operatividad diaria, la velocidad de restore se prioriza según la necesidad de accesibilidad y disponibilidad inmediata de los datos críticos para la recuperación y continuidad del negocio.
+    \item \textbf{Aspectos Técnicos}: Los backups pueden ser programados para ejecutarse durante periodos de baja demanda para minimizar el impacto sobre el rendimiento del sistema, utilizando técnicas como la compresión y la deduplicación para optimizar el espacio y el tiempo. En contraste, la restauración debe ser capaz de descomprimir y ordenar esos datos eficientemente, a menudo bajo condiciones de tiempo crítico, y puede requerir un acceso más rápido y directo a los medios de almacenamiento.
+\end{itemize}
+
+Comprender estas diferencias es esencial para diseñar e implementar estrategias de backup y restore que no solo protejan los datos, sino que también garanticen que sean accesibles y utilizables tan pronto como sea necesario tras un incidente.
